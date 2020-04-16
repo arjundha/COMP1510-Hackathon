@@ -1,6 +1,6 @@
 # COMP1510-Hackathon
 
-Team 1 for COMP 1510 Hackathon Final Exam
+Team 1 for the COMP 1510 Hackathon Final Exam.
 
 
 | Team Member | Student ID | GitHub ID |
