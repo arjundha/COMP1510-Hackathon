@@ -197,7 +197,13 @@ def check_if_user_information_is_correct(user_object: object):
 
 
 def edit_user(new_user: object):
+    """
+    Alter the information in a User object
 
+    :param new_user: A User object to be edited
+    :precondition: object entered as a parameter is a User object
+    :postcondition: Will allow users to edit the object
+    """
     sentinel = False  # Sentinel value, when this changes to True, the while loop will end
 
     while not sentinel:
