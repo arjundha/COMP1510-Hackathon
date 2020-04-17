@@ -45,6 +45,12 @@ def display_headline_title(articles: list):
     for num, article in enumerate(articles, 1):
         print(num, article["title"])
 
+    view_choice = get_user_view_choice()
+
+    if view_choice:
+        view_article_in_browser(articles[view_choice - 1]['url'])
+
+
 
 def get_user_view_choice():
     """
@@ -52,14 +58,14 @@ def get_user_view_choice():
     :return:
     """
     try:
-        view = int(input("Do you want to view an article? 1 - Yes, 2 - No: "))
+        view = int(input("\nDo you want to view an article? 1 - Yes, 2 - No: "))
     except ValueError as e:
         print(e)
     else:
         if view == 1:
-            article_choice = get_user_article_choice()
+            return get_user_article_choice()
         else:
-            return
+            return None
 
 
 def get_user_article_choice():
@@ -72,7 +78,15 @@ def get_user_article_choice():
     except ValueError as e:
         print(e)
     else:
-        return article_num
+        if 1 <= article_num <= 5:
+            return article_num
+        else:
+            print("That's not a valid article number, try again!")
+            get_user_article_choice()
+
+
+def view_article_in_browser(url):
+    webbrowser.open_new(url)
 
 
 get_country_top_headlines('ca')
