@@ -111,7 +111,7 @@ def display_statistics(statistics):
 
 def main():
     """
-    Run program
+    Run program.
     """
     while True:
         user_choice = option_menu()
