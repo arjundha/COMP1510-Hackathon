@@ -220,7 +220,17 @@ def edit_user_info(user_input: str, new_user):
 
 
 def numbered_list(user_list: list):
-    for i, thing in enumerate(user_list):
+    """
+    Print an enumerated list of elements.
+
+    This helper function was created through decomposition to reduce the amount of repetitive code being used. Many
+    functions in this module utilize this function.
+
+    :param user_list: A list containing elements that will be printed in as a numbered list
+    :precondition: Parameter is a list
+    :postcondition: Will print the list as a numbered list
+    """
+    for i, thing in enumerate(user_list):  # For each thing in the list, print the list with an increasing number
         print("%d: %s" % (i + 1, thing))
 
 
