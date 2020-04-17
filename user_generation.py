@@ -151,9 +151,9 @@ def is_student() -> bool:
     numbered_list(["Yes", "No"])
 
     while True:
-        user_input = input()  # take user input here
-
-        if user_input == "1":  # If 1 (Yes) return True
+        user_input = input().strip()
+        
+        if user_input == "1":
             return True
 
         elif user_input == "2":  # If 2 (No) return False
@@ -169,7 +169,7 @@ def check_if_user_information_is_correct(user_object: object):
 
     sentinel = False
     while not sentinel:
-        user_input = input()
+        user_input = input().strip()
         if user_input == "1":
             print("Great!")
             sentinel = True
@@ -187,7 +187,7 @@ def edit_user(new_user: object):
     while not sentinel:
         print("\nHere are your options to edit.")
         numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
-        user_input = input("\nWhat would you like to change? (b to go back): ")
+        user_input = input("\nWhat would you like to change? (b to go back): ").strip()
 
         if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
             edit_user_info(user_input, new_user)
