@@ -4,6 +4,7 @@ Functions that assist in generating a User object.
 import doctest
 import user
 import re
+import covid19_stats
 
 
 def create_user():
@@ -74,7 +75,13 @@ def enter_country():
             print("A country cannot be blank, please try again.")
 
         else:
-            return country.strip().title()
+            try:
+                covid19_stats.get_country_stats(country)
+            except StopIteration:
+                print("Im sorry we dont recognize this country.")
+                print("Try typing the full name of the country. Ex: United States -> United States of America")
+            else:
+                return country.strip().title()
 
 
 def numbered_list(user_list):
