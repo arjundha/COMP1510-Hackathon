@@ -87,10 +87,15 @@ def is_student():
             print("Please enter 1 or 2.")
 
 
+def check_if_user_information_is_correct(user_oject):
+    return None
+
+
 def main():
     doctest.testmod()
     print("Welcome!")
     new_user = create_user()
+
 
 
 if __name__ == '__main__':
