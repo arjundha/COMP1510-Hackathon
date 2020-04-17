@@ -9,6 +9,13 @@ import doctest
 
 
 def verify_for_funding(user_object):
+    """
+    Verify user for Canada's government funding.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object is verified for government funding
+    """
     verification = {"Country": verify_country(user_object), "Age": verify_age(user_object),
                     "Income": verify_income(user_object)}
 
