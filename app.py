@@ -22,9 +22,9 @@ def option_menu():
 
     3. Search by Country
     
-    5. News Articles
+    4. News Articles
     
-    6. Quit
+    5. Quit
     
     >>>\n"""))
 
@@ -88,13 +88,14 @@ def country_search():
     country = input("Please input country\n").strip().lower()
 
     try:
-        country = covid19_stats.get_country_stats(country)
+        country_statistics = covid19_stats.get_country_stats(country)
 
     except StopIteration:
         print("Sorry, Your input is not a valid country")
 
     else:
-        display_statistics(country)
+        print(country)
+        display_statistics(country_statistics)
 
 
 def global_statistics():
