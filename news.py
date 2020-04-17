@@ -6,6 +6,14 @@ import requests
 import default_country
 
 
+def print_messages(original_func):
+    def wrapper_printer(*args, **kwargs):
+        print("\nLoading...")
+        original_func(*args, **kwargs)
+        print("Load successful!")
+    return wrapper_printer
+
+
 def verify_news_api_response(url: str) -> dict:
     response = requests.get(url)
 
@@ -42,7 +50,7 @@ def display_headline_title(articles: list):
     :precondition: articles must be a well-formed list
     :postcondition: Successfully display the headline of the top 5 articles
     """
-    print("These are the top 5 articles of your selected country: \n")
+    print("These are the top 5 articles of your current country location: \n")
 
     for num, article in enumerate(articles, 1):
         print(num, article["title"])
@@ -63,9 +71,9 @@ def get_user_article_choice():
     :return: User's choice of article number as an integer
     """
     try:
-        article_num = int(input("Which article would you like to view?: "))
-    except ValueError as e:
-        print(e)
+        article_num = int(input("\nWhich article would you like to view?: "))
+    except ValueError:
+        print("Invalid article number, try again!")
     else:
         if 1 <= article_num <= 5:
             return article_num
@@ -74,6 +82,7 @@ def get_user_article_choice():
             get_user_article_choice()
 
 
+@print_messages
 def view_article_in_browser(url):
     """
     Open the article URL in user's default web browser.
@@ -82,5 +91,5 @@ def view_article_in_browser(url):
     :precondition: url must be a well-formed string
     :postcondition: Successfully open the article URL in user's default web browser
     """
-    print("The news article has opened in your web-browser")
+    # print("The news article has opened in your web-browser")
     webbrowser.open_new(url)
