@@ -1,6 +1,7 @@
 import requests
 import json
 import textwrap
+import covid19_stats
 
 
 def menu():
@@ -28,14 +29,12 @@ def menu_handler(user_input):
 def country_search():
     country = input("Please input country\n").strip().lower()
 
-    all_countries = get('https://api.covid19api.com/summary')
-
-    countries_dictionary = all_countries["Countries"]
-
     try:
-        country = next(item for item in countries_dictionary if item["Slug"] == country)
+        country = covid19_stats.get_country_stats(country)
+
     except StopIteration:
         print("Sorry, Your input is not a valid country")
+
     else:
         print(f"""
             New Confirmed Cases:    {country["NewConfirmed"]}
@@ -56,8 +55,14 @@ def country_search():
 
 
 def global_statistics():
-    global_dict = get('https://api.covid19api.com/summary')
+    """
+    Display the global Covid-19 statistics.
+
+    :postcondition: will display all statistics for the world
+    """
+    global_dict = covid19_stats.global_stats()
     statistics = global_dict['Global']
+
     print(f"""
     New Confirmed Cases:    {statistics["NewConfirmed"]}
 
@@ -74,12 +79,6 @@ def global_statistics():
     \n""")
 
     input("Hit any button to continue")
-
-
-def get(api_link):
-    response = requests.get(api_link)
-    response.raise_for_status()
-    return json.loads(response.text)
 
 
 def main():
