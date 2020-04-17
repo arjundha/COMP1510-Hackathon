@@ -101,6 +101,9 @@ def display_statistics(statistics):
 
 
 def main():
+    """
+    Run program
+    """
     while True:
         x = menu()
         try:
