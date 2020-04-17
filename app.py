@@ -5,6 +5,13 @@ import covid19_stats
 
 
 def menu():
+    """
+    Ask user to choose option.
+
+    :precondition: input must be a number that corresponds with an option
+    :postcondition: will return the user's choice as an int
+    :return: input as an int
+    """
     print("Welcome")
     return int(input("""
     1. Global Statistics
@@ -16,6 +23,15 @@ def menu():
 
 
 def menu_handler(user_input):
+    """
+    Return function that corresponds you user_input.
+
+    :param user_input: a user entered integer
+    :precondition: user_input must be an integer that corresponds with an option
+    :postcondition: will return the function that corresponds with desired option
+    :raise: TypeError if user_input does not correspond with and option
+    :return: a function that corresponds with user_input
+    """
     if user_input == 1:
         return global_statistics()
     if user_input == 2:
@@ -27,6 +43,13 @@ def menu_handler(user_input):
 
 
 def country_search():
+    """
+    Search country specific statistics.
+
+    :precondition: country input must be a valid country
+    :postcondition: will display the information regarding the entered country
+    :except: StopIteration if input is not a valid country
+    """
     country = input("Please input country\n").strip().lower()
 
     try:
@@ -36,22 +59,7 @@ def country_search():
         print("Sorry, Your input is not a valid country")
 
     else:
-        print(f"""
-            New Confirmed Cases:    {country["NewConfirmed"]}
-
-            Total Confirmed:        {country["TotalConfirmed"]}
-
-            New Deaths:             {country["NewDeaths"]}
-
-            Total Deaths:           {country["TotalDeaths"]}
-
-            Newly Recovered:        {country["NewRecovered"]}
-
-            Total Recovered:        {country["TotalRecovered"]}
-
-            \n""")
-
-        input("Hit any button to continue")
+        display_statistics(country)
 
 
 def global_statistics():
@@ -63,20 +71,24 @@ def global_statistics():
     global_dict = covid19_stats.global_stats()
     statistics = global_dict['Global']
 
+    display_statistics(statistics)
+
+
+def display_statistics(statistics):
     print(f"""
-    New Confirmed Cases:    {statistics["NewConfirmed"]}
+        New Confirmed Cases:    {statistics["NewConfirmed"]}
 
-    Total Confirmed:        {statistics["TotalConfirmed"]}
+        Total Confirmed:        {statistics["TotalConfirmed"]}
 
-    New Deaths:             {statistics["NewDeaths"]}
+        New Deaths:             {statistics["NewDeaths"]}
 
-    Total Deaths:           {statistics["TotalDeaths"]}
+        Total Deaths:           {statistics["TotalDeaths"]}
 
-    Newly Recovered:        {statistics["NewRecovered"]}
+        Newly Recovered:        {statistics["NewRecovered"]}
 
-    Total Recovered:        {statistics["TotalRecovered"]}
+        Total Recovered:        {statistics["TotalRecovered"]}
 
-    \n""")
+        \n""")
 
     input("Hit any button to continue")
 
