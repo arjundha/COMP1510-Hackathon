@@ -7,6 +7,15 @@ import default_country
 
 
 def print_messages(original_func):
+    """
+    Print loading messages to display for user.
+
+    :param original_func: A function
+    :precondition: original_func must be a well-formed function
+    :postcondition: Successfully invoke the wrapper function
+
+    :return: wrapper_printer
+    """
     def wrapper_printer(*args, **kwargs):
         print("\nLoading...")
         original_func(*args, **kwargs)
@@ -16,6 +25,15 @@ def print_messages(original_func):
 
 
 def verify_news_api_response(url: str) -> dict:
+    """
+    Send an HTTP request for the passed API URL.
+
+    :param url: A string
+    :precondition: url must be a well-formed string
+    :postcondition: Successfully get the JSON encoded data and parses it into a Python object
+
+    :return: Parsed JSON object as a dictionary
+    """
     response = requests.get(url)
 
     try:
@@ -28,6 +46,12 @@ def verify_news_api_response(url: str) -> dict:
 
 
 def display_news_articles_menu():
+    """
+    Display news article menu to get user input.
+
+    :precondition: User input must be an integer between 1 and 3
+    :postcondition: Successfully handle user's input using menu_handler function
+    """
     try:
         user_input = int(input(
             "1. Top news about your current location\n"
@@ -44,6 +68,13 @@ def display_news_articles_menu():
 
 
 def menu_handler(user_input):
+    """
+    Direct user to their selected menu option.
+
+    :param user_input: An integer
+    :precondition: user_input must be an integer between 1 and 3
+    :postcondition: Successfully invoke user's selected menu option function
+    """
     if user_input == 1:
         get_default_country_top_headlines()
     elif user_input == 2:
@@ -54,9 +85,8 @@ def menu_handler(user_input):
 
 def get_default_country_top_headlines():
     """
-    Get the articles of user's current country location.
+    Get the top 5 articles of user's current country location.
 
-    :precondition: country_code must be a well-formed string
     :postcondition: Successfully get the news articles of the user's current country location.
     """
     country_code = default_country.get_default_country(default_country.get_ip())
@@ -70,6 +100,11 @@ def get_default_country_top_headlines():
 
 
 def covid_news():
+    """
+    Get the top 5 articles on COVID-19.
+
+    :postcondition: Successfully get the news articles on COVID-19
+    """
     covid_news_info = verify_news_api_response("https://newsapi.org/v2/everything?q=covid-19"
                                                "&sortBy=popularity&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
     top_covid_news_articles = covid_news_info['articles'][0:5]
@@ -77,7 +112,15 @@ def covid_news():
     display_headline_title(top_covid_news_articles)
 
 
-def get_user_keyword():
+def get_user_keyword() -> str:
+    """
+    Get user's keyword choice.
+
+    :precondition: User's inputted keyword must be a string
+    :postcondition: Successfully return keyword as a string
+
+    :return: keyword as a string
+    """
     try:
         keyword = input("What articles would you like to search? ")
     except ValueError:
@@ -88,6 +131,11 @@ def get_user_keyword():
 
 
 def get_articles_by_keyword():
+    """
+    Get news articles based on a keyword.
+
+    :postcondition: Successfully invoke the display_headline_title function
+    """
     keyword = get_user_keyword()
 
     keyword_news_info = verify_news_api_response("https://newsapi.org/v2/"
