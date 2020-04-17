@@ -60,12 +60,17 @@ def enter_income():
 
 
 def enter_country():
-    return None
+    country = input("What is your country of residence?: ")
+    return country.strip().title()
+
+
+def is_student():
+
 
 
 def main():
     doctest.testmod()
-    print("Welcome")
+    print("Welcome!")
     create_user()
 
 
