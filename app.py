@@ -8,7 +8,9 @@ def menu():
     return int(input("""
     1. Global Statistics
 
-    2. Search by Country\n
+    2. Search by Country
+    
+    3. Quit\n
     """))
 
 
@@ -17,6 +19,8 @@ def menu_handler(user_input):
         return global_statistics()
     if user_input == 2:
         return country_search()
+    if user_input == 3:
+        quit()
     else:
         raise TypeError
 
