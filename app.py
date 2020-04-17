@@ -5,16 +5,42 @@ import textwrap
 
 def menu():
     print("Welcome")
-    return input("""
+    return int(input("""
     1. Global Statistics
 
-    2. Search by Country
-    """)
+    2. Search by Country\n
+    """))
 
 
 def menu_handler(user_input):
-    if int(user_input) == 1:
+    if user_input == 1:
         return global_statistics()
+    if user_input == 2:
+        return country_search()
+
+
+def country_search():
+    country = input("Please input country\n")
+
+    all_countries = get('https://api.covid19api.com/summary')
+
+    countries_dictionary = all_countries["Countries"]
+
+    country = next(item for item in countries_dictionary if item["Slug"] == country)
+    print(f"""
+        New Confirmed Cases:    {country["NewConfirmed"]}
+
+        Total Confirmed:        {country["TotalConfirmed"]}
+
+        New Deaths:             {country["NewDeaths"]}
+
+        Total Deaths:           {country["TotalDeaths"]}
+
+        Newly Recovered:        {country["NewRecovered"]}
+
+        Total Recovered:        {country["TotalRecovered"]}
+
+        \n""")
 
 
 def global_statistics():
@@ -33,7 +59,7 @@ def global_statistics():
 
     Total Recovered:        {statistics["TotalRecovered"]}
 
-    """)
+    \n""")
 
 
 def get(api_link):
