@@ -23,7 +23,7 @@ def option_menu():
     
     4. Quit
     
-    >>>\n"""))
+    >>>"""))
 
 
 def menu_handler(user_input):
