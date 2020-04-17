@@ -73,7 +73,7 @@ def get_user_article_choice():
     try:
         article_num = int(input("\nWhich article would you like to view?: "))
     except ValueError:
-        print("Invalid article number, try again!")
+        print("Invalid input! Going back to menu.")
     else:
         if 1 <= article_num <= 5:
             return article_num
