@@ -22,7 +22,7 @@ def print_ip(ip_address: str):
     print(f"Your IP Address is: {ip_address}")
 
 
-def get_default_country(ip_address: str) -> dict:
+def get_default_country(ip_address: str) -> str:
     """Get the user's default country.
 
     :param ip_address: the user's ip_address
@@ -34,7 +34,7 @@ def get_default_country(ip_address: str) -> dict:
     return response.country
 
 
-def print_default_country(default_country):
+def print_default_country(default_country: str):
     """Print the user's default country.
 
     :param default_country: the country code of the user's current location
