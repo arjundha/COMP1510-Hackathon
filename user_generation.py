@@ -164,21 +164,29 @@ def is_student() -> bool:
 
 
 def check_if_user_information_is_correct(user_object: object):
+
+    # Display the User object, and print a list of options
     print("\nIs this information correct?\n%s\n" % user_object)
     numbered_list(["Yes", "No"])
 
-    sentinel = False
+    sentinel = False  # Sentinel value for breaking out of the loop
+
     while not sentinel:
-        user_input = input().strip()
+        user_input = input().strip()  # Get user input and strip it
+
         if user_input == "1":
+            # If the information is verified as being correct, break out of the loop via sentinel value
             print("Great!")
             sentinel = True
 
         elif user_input == "2":
+            # If the information is incorrect, offer users the chance to alter the information then
+            # exit the loop
             edit_user(user_object)
             sentinel = True
 
         else:
+            # Remain in the loop until either a 1 or a 2 is typed by the user
             print("Please enter 1 or 2.")
 
 
