@@ -82,14 +82,23 @@ def enter_age() -> int:
 
 
 def enter_income() -> int:
+    """
+    Determine the annual income of a user.
+
+    :precondition: User enters a positive integer when prompted.
+    :postcondition: Will determine the income of a user.
+    :raise ValueError when a user enters an income less than 0
+    :return: Annual income as an int
+    """
     while True:
         try:
+            # Prompt the user to enter their income and cast it as an integer
             income = int(input("What is your current annual income? (Enter your income as a positive integer): "))
 
-            if income < 0:
+            if income < 0:  # If the user enters a negative income, raise a ValueError
                 raise ValueError
 
-        except ValueError:
+        except ValueError:  # Catch the ValueError and print a helpful message
             print("Please enter your income as a positive integer.")
 
         else:
