@@ -48,6 +48,11 @@ def menu_handler(user_input):
 
 
 def get_news():
+    """
+    Display news article interface
+
+    :postcondition: will run the news article function get_default_country_top_headlines() from news
+    """
     news.get_default_country_top_headlines()
 
 
