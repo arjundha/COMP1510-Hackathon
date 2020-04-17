@@ -35,6 +35,12 @@ def get_default_country(ip_address):
 
 
 def print_default_country(default_country):
+    """Print the user's default country.
+
+    :param default_country: the country code of the user's current location
+    :precondition: default_country is a well formed country code
+    :postcondition: the user's default country code has been printed
+    """
     print(f"default country is: {default_country}")
 
 
