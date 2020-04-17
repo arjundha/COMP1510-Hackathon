@@ -110,7 +110,7 @@ def enter_country() -> str:
     Determine what country a user is residing in.
 
     :precondition: User enters a string representing a country when prompted
-    :postcondition: Will return the country as a string to be sued in object construction
+    :postcondition: Will return the country as a string to be used in object construction
     :raise ValueError when a user enters an empty string
     :return: a string representing the country where a user lives
     """
@@ -137,19 +137,30 @@ def enter_country() -> str:
 
 
 def is_student() -> bool:
+    """
+    Determine whether a user is a current post-secondary student.
+
+    :precondition: User enters 1 or 2 when prompted
+    :postcondition: Will allow users the chance to declare their student status
+    :return: a Boolean representing whether a user is a student or not (True if they are)
+    """
+    #  Prompt users to choose options 1 or 2 from an enumerated list (Yes or No)
+    #  This is in regards to whether they are a current post-secondary student or not
+
     print("Are you a current post-secondary student?")
     numbered_list(["Yes", "No"])
 
     while True:
         user_input = input().strip()
+        
         if user_input == "1":
             return True
 
-        elif user_input == "2":
+        elif user_input == "2":  # If 2 (No) return False
             return False
 
         else:
-            print("Please enter 1 or 2.")
+            print("Please enter 1 or 2.")  # If the user didn't enter a valid option, keep them in the while-loop
 
 
 def check_if_user_information_is_correct(user_object: object):
@@ -209,11 +220,24 @@ def edit_user_info(user_input: str, new_user):
 
 
 def numbered_list(user_list: list):
-    for i, thing in enumerate(user_list):
+    """
+    Print an enumerated list of elements.
+
+    This helper function was created through decomposition to reduce the amount of repetitive code being used. Many
+    functions in this module utilize this function.
+
+    :param user_list: A list containing elements that will be printed in as a numbered list
+    :precondition: Parameter is a list
+    :postcondition: Will print the list as a numbered list
+    """
+    for i, thing in enumerate(user_list):  # For each thing in the list, print the list with an increasing number
         print("%d: %s" % (i + 1, thing))
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
     print("Welcome!")
     new_user = create_user()

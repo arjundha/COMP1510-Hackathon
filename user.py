@@ -134,6 +134,9 @@ class User:
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
     test_user = User("Arjun", 24, 0, "Canada", True)
     print(test_user)
