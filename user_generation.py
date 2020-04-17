@@ -30,9 +30,8 @@ def validate_name(name):
 
 def create_age():
     while True:
-        age = input("What is your current age?: ")
         try:
-            age = int(age)
+            age = int(input("What is your current age?: "))
 
             if age <= 0:
                 raise ValueError
