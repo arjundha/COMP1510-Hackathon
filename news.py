@@ -51,7 +51,6 @@ def display_headline_title(articles: list):
         view_article_in_browser(articles[view_choice - 1]['url'])
 
 
-
 def get_user_view_choice():
     """
     Get user's choice if they want to view an article.
