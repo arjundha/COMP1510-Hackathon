@@ -49,7 +49,7 @@ def menu_handler(user_input):
     elif user_input == 2:
         covid_news()
     elif user_input == 3:
-        search_articles_by_keyword()
+        get_articles_by_keyword()
 
 
 def get_default_country_top_headlines():
@@ -87,9 +87,15 @@ def get_user_keyword():
         return keyword
 
 
-def search_articles_by_keyword():
+def get_articles_by_keyword():
     keyword = get_user_keyword()
-    print(keyword)
+
+    keyword_news_info = verify_news_api_response("https://newsapi.org/v2/"
+                                                 "everything?q=" + keyword + "&sortBy=popularity&apiKey="
+                                                                             "e454fda9cf5b4a5d8e6f8bc3d960c7b5")
+    keyword_news_articles = keyword_news_info['articles'][0:5]
+    print("These are the top 5 articles for " + keyword + ": \n")
+    display_headline_title(keyword_news_articles)
 
 
 def display_headline_title(articles: list):
