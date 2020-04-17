@@ -23,7 +23,7 @@ def option_menu():
     
     4. Quit
     
-    >>>"""))
+    >>>\n"""))
 
 
 def menu_handler(user_input):
@@ -49,7 +49,12 @@ def menu_handler(user_input):
 
 
 def get_news():
-    news.get_default_country_top_headlines()
+    """
+    Display news article interface
+
+    :postcondition: will run the news article function get_default_country_top_headlines() from news
+    """
+    news.display_news_articles_menu()
 
 
 def country_search():
@@ -93,6 +98,8 @@ def display_statistics(statistics):
     :postconditions: Will display details statistics regarding the specified dictionary
     """
     print(f"""
+        Total Active Cases:     {statistics["TotalConfirmed"] - statistics["TotalDeaths"] - statistics["TotalRecovered"]}
+    
         New Confirmed Cases:    {statistics["NewConfirmed"]}
 
         Total Confirmed:        {statistics["TotalConfirmed"]}

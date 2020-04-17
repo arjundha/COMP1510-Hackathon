@@ -11,6 +11,7 @@ def print_messages(original_func):
         print("\nLoading...")
         original_func(*args, **kwargs)
         print("Load successful!")
+
     return wrapper_printer
 
 
@@ -26,6 +27,29 @@ def verify_news_api_response(url: str) -> dict:
         return json.loads(response.text)
 
 
+def display_news_articles_menu():
+    try:
+        user_input = int(input(
+            "1. General news about your current location\n"
+            "2. Global news about COVID-19\n"
+            "3. Search by keyword\n"))
+    except ValueError:
+        print("Invalid input! Try again.")
+    else:
+        if 1 <= user_input <= 3:
+            menu_handler(user_input)
+        else:
+            print("Invalid input! Try again.")
+            display_news_articles_menu()
+
+
+def menu_handler(user_input):
+    if user_input == 1:
+        get_default_country_top_headlines()
+    elif user_input == 2:
+        covid_news()
+
+
 def get_default_country_top_headlines():
     """
     Get the articles of user's current country location.
@@ -39,7 +63,16 @@ def get_default_country_top_headlines():
                                                  + country_code + "&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
     articles_of_country = country_news_info["articles"][0:5]
+    print("These are the top 5 news articles of your current country location: \n")
     display_headline_title(articles_of_country)
+
+
+def covid_news():
+    covid_news_info = verify_news_api_response("https://newsapi.org/v2/everything?q=covid-19"
+                                               "&sortBy=popularity&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
+    top_covid_news_articles = covid_news_info['articles'][0:5]
+    print("These are the top 5 global news articles for COVID-19: \n")
+    display_headline_title(top_covid_news_articles)
 
 
 def display_headline_title(articles: list):
@@ -50,8 +83,6 @@ def display_headline_title(articles: list):
     :precondition: articles must be a well-formed list
     :postcondition: Successfully display the headline of the top 5 articles
     """
-    print("These are the top 5 articles of your current country location: \n")
-
     for num, article in enumerate(articles, 1):
         print(num, article["title"])
 
@@ -61,7 +92,7 @@ def display_headline_title(articles: list):
         view_article_in_browser(articles[view_choice - 1]['url'])
 
 
-def get_user_article_choice():
+def get_user_article_choice() -> int:
     """
     Get user's choice on which article they want to view.
 

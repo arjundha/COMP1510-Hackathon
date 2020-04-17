@@ -86,6 +86,7 @@ def is_student():
     print("Are you a current post-secondary student?")
     numbered_list(["Yes", "No"])
 
+
     while True:
         user_input = input()
         if user_input == "1":
@@ -151,12 +152,14 @@ def edit_user_info(user_input, new_user):
         new_user.set_student(student_status)
 
 
+
 def main():
     doctest.testmod()
     print("Welcome!")
     new_user = create_user()
     check_if_user_information_is_correct(new_user)
     print("Nice")
+
 
 
 if __name__ == '__main__':
