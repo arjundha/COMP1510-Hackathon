@@ -28,7 +28,7 @@ def verify_news_api_response(url: str) -> dict:
 
 def get_default_country_top_headlines():
     """
-    Get the articles of a specified country.
+    Get the articles of user's current country location.
 
     :precondition: country_code must be a well-formed string
     :postcondition: Successfully get the news articles of the user's current country location.
@@ -73,7 +73,7 @@ def get_user_article_choice():
     try:
         article_num = int(input("\nWhich article would you like to view?: "))
     except ValueError:
-        print("Invalid article number, try again!")
+        print("Invalid input! Going back to menu.")
     else:
         if 1 <= article_num <= 5:
             return article_num

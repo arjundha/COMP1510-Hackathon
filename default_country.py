@@ -2,7 +2,7 @@ from requests import get
 from ip2geotools.databases.noncommercial import DbIpCity
 
 
-def get_ip():
+def get_ip() -> str:
     """Get the user's IP address.
 
     :postcondition: correctly returns the IP_address as a string
@@ -12,7 +12,7 @@ def get_ip():
     return ip_address
 
 
-def print_ip(ip_address):
+def print_ip(ip_address: str):
     """Print the user's IP address.
 
     :param ip_address: a string
@@ -22,7 +22,7 @@ def print_ip(ip_address):
     print(f"Your IP Address is: {ip_address}")
 
 
-def get_default_country(ip_address):
+def get_default_country(ip_address: str) -> str:
     """Get the user's default country.
 
     :param ip_address: the user's ip_address
@@ -34,7 +34,13 @@ def get_default_country(ip_address):
     return response.country
 
 
-def print_default_country(default_country):
+def print_default_country(default_country: str):
+    """Print the user's default country.
+
+    :param default_country: the country code of the user's current location
+    :precondition: default_country is a well formed country code
+    :postcondition: the user's default country code has been successfully printed
+    """
     print(f"default country is: {default_country}")
 
 
@@ -43,7 +49,3 @@ def main():
     print_ip(ip_address)
     default_country = get_default_country(ip_address)
     print_default_country(default_country)
-
-
-if __name__ == "__main__":
-    main()

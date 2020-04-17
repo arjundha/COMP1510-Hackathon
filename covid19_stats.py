@@ -5,8 +5,12 @@ import json
 
 def get(api_link):
     response = requests.get(api_link)
-    response.raise_for_status()
-    return json.loads(response.text)
+    try:
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print(e)
+    else:
+        return json.loads(response.text)
 
 
 def global_stats():
