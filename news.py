@@ -30,9 +30,9 @@ def verify_news_api_response(url: str) -> dict:
 def display_news_articles_menu():
     try:
         user_input = int(input(
-            "1. General news about your current location\n"
+            "1. Top news about your current location\n"
             "2. Global news about COVID-19\n"
-            "3. Search by keyword\n"))
+            "3. Search news articles by keyword\n"))
     except ValueError:
         print("Invalid input! Try again.")
     else:
@@ -48,6 +48,8 @@ def menu_handler(user_input):
         get_default_country_top_headlines()
     elif user_input == 2:
         covid_news()
+    elif user_input == 3:
+        get_articles_by_keyword()
 
 
 def get_default_country_top_headlines():
@@ -73,6 +75,27 @@ def covid_news():
     top_covid_news_articles = covid_news_info['articles'][0:5]
     print("These are the top 5 global news articles for COVID-19: \n")
     display_headline_title(top_covid_news_articles)
+
+
+def get_user_keyword():
+    try:
+        keyword = input("What articles would you like to search? ")
+    except ValueError:
+        print("Invalid input, try again!")
+    else:
+        keyword = keyword.replace(' ', '+')
+        return keyword
+
+
+def get_articles_by_keyword():
+    keyword = get_user_keyword()
+
+    keyword_news_info = verify_news_api_response("https://newsapi.org/v2/"
+                                                 "everything?q=" + keyword + "&sortBy=popularity&apiKey="
+                                                                             "e454fda9cf5b4a5d8e6f8bc3d960c7b5")
+    keyword_news_articles = keyword_news_info['articles'][0:5]
+    print("These are the top 5 articles for " + keyword + ": \n")
+    display_headline_title(keyword_news_articles)
 
 
 def display_headline_title(articles: list):
