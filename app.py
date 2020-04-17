@@ -3,6 +3,7 @@ import json
 import textwrap
 import covid19_stats
 import news
+import user_generation
 
 
 def option_menu():
@@ -17,21 +18,25 @@ def option_menu():
     return int(input("""
     1. Global Statistics
 
-    2. Search by Country
+    2. Information about my Country
+
+    3. Search by Country
     
-    3. News Articles
+    5. News Articles
     
-    4. Quit
+    6. Quit
     
     >>>"""))
 
 
-def menu_handler(user_input):
+def menu_handler(user_input, user):
     """
     Return function that corresponds you user_input.
 
     :param user_input: a user entered integer
+    :param user: a well formed user object
     :precondition: user_input must be an integer that corresponds with an option
+    :precondition: user must be an object created in user_generation
     :postcondition: will return the function that corresponds with desired option
     :raise: TypeError if user_input does not correspond with and option
     :return: a function that corresponds with user_input
@@ -39,13 +44,28 @@ def menu_handler(user_input):
     if user_input == 1:
         return global_statistics()
     if user_input == 2:
-        return country_search()
+        return my_country(user)
     if user_input == 3:
-        return get_news()
+        return country_search()
     if user_input == 4:
+        return get_news()
+    if user_input == 5:
         quit()
     else:
         raise TypeError
+
+
+def my_country(user):
+    """
+    Display statistics from user country
+
+    :param user: a well formed user object
+    :precondition: user must be an object created in user_generation
+    :postcondition: will display all information regarding the user's inputted location
+    """
+    print(user.get_country())
+    country_stats = covid19_stats.get_country_stats(user.get_country().lower())
+    display_statistics(country_stats)
 
 
 def get_news():
@@ -121,10 +141,12 @@ def main():
     """
     Run program.
     """
+    user = user_generation.create_user()
+
     while True:
         user_choice = option_menu()
         try:
-            menu_handler(user_choice)
+            menu_handler(user_choice, user)
         except TypeError:
             print("Your input was invalid or not an option, try again")
 

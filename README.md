@@ -12,4 +12,8 @@ Team 1 for the COMP 1510 Hackathon Final Exam.
 
 Getting Started
 ===============
-1. pip install ip2geotools
+In terminal:
+1. git clone https://github.com/arjundha/COMP1510-Hackathon.git
+2. navigate to your python/Scripts folder
+2. pip install ip2geotools
+
