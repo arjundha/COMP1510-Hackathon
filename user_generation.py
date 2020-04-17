@@ -41,7 +41,7 @@ def enter_name() -> str:
     return name
 
 
-def validate_name(name:str ) -> bool:
+def validate_name(name: str) -> bool:
     """
     Determine whether a user's name is valid/formed correctly.
 
