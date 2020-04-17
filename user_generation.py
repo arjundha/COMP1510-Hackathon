@@ -60,32 +60,45 @@ def validate_name(name: str) -> bool:
 
 def enter_age() -> int:
     """
+    Determine the age of a user.
 
-    :return:
+    :precondition: User enters a positive integer when prompted.
+    :postcondition: Will determine the age of a user.
+    :raise ValueError when a user enters age less than or equal to 0
+    :return: User age as an int
     """
     while True:
         try:
-            age = int(input("What is your current age?: "))
+            age = int(input("What is your current age?: "))  # Ask the user for their age
 
-            if age < 0:
-                raise ValueError
+            if age <= 0:
+                raise ValueError  # Raise a value error if the age is less than or equal to 0
 
-        except ValueError:
-            print("Please enter your age as a positive integer.")
+        except ValueError:  # Catch a ValueError
+            print("Please enter your age as a positive integer.")  # Prints a helpful message upon a ValueError
 
         else:
             return age
 
 
 def enter_income() -> int:
+    """
+    Determine the annual income of a user.
+
+    :precondition: User enters a positive integer when prompted.
+    :postcondition: Will determine the income of a user.
+    :raise ValueError when a user enters an income less than 0
+    :return: Annual income as an int
+    """
     while True:
         try:
+            # Prompt the user to enter their income and cast it as an integer
             income = int(input("What is your current annual income? (Enter your income as a positive integer): "))
 
-            if income < 0:
+            if income < 0:  # If the user enters a negative income, raise a ValueError
                 raise ValueError
 
-        except ValueError:
+        except ValueError:  # Catch the ValueError and print a helpful message
             print("Please enter your income as a positive integer.")
 
         else:
@@ -93,28 +106,34 @@ def enter_income() -> int:
 
 
 def enter_country() -> str:
+    """
+    Determine what country a user is residing in.
+
+    :precondition: User enters a string representing a country when prompted
+    :postcondition: Will return the country as a string to be sued in object construction
+    :raise ValueError when a user enters an empty string
+    :return: a string representing the country where a user lives
+    """
     while True:
         try:
+            # Prompt user to enter their country
             country = input("What is your country of residence?: ")
-            if country.strip() == "":
-                raise ValueError
+            if country.strip() == "":  # Check to see if the country is an empty string
+                raise ValueError  # Raise an error if it empty
 
-        except ValueError:
+        except ValueError:  # Catch the ValueError and print a helpful message
             print("A country cannot be blank, please try again.")
 
         else:
             try:
-                covid19_stats.get_country_stats(country)
-            except StopIteration:
+                covid19_stats.get_country_stats(country)  # Check to see if a country exists in the covid19_stats API
+
+            except StopIteration:  # Catch the StopIteration error and print helpful messages
                 print("Im sorry we dont recognize this country.")
                 print("Try typing the full name of the country. Ex: United States -> United States of America")
+
             else:
                 return country.strip().title()
-
-
-def numbered_list(user_list: list):
-    for i, thing in enumerate(user_list):
-        print("%d: %s" % (i + 1, thing))
 
 
 def is_student() -> bool:
@@ -187,6 +206,11 @@ def edit_user_info(user_input: str, new_user):
     elif user_input == "5":
         student_status = is_student()
         new_user.set_student(student_status)
+
+
+def numbered_list(user_list: list):
+    for i, thing in enumerate(user_list):
+        print("%d: %s" % (i + 1, thing))
 
 
 def main():
