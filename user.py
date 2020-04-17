@@ -28,3 +28,25 @@ class User:
     def get_student(self) -> bool:
         return self.__student
 
+    def set_name(self, new_name: str):
+        self.__name = new_name
+
+    def set_age(self, new_age: int):
+        self.__age = new_age
+
+    def set_income(self, new_income: int):
+        self.__income = new_income
+
+    def set_country(self, new_country: str):
+        self.__country = new_country
+
+    def set_student(self, new_student: bool):
+        self.__student = new_student
+
+
+def main():
+    doctest.testmod()
+
+
+if __name__ == '__main__':
+    main()
