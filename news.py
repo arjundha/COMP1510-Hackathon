@@ -3,6 +3,7 @@ import json
 import textwrap
 import webbrowser
 import requests
+import default_country
 
 
 def verify_news_api_response(url: str) -> dict:
@@ -17,14 +18,15 @@ def verify_news_api_response(url: str) -> dict:
         return json.loads(response.text)
 
 
-def get_country_top_headlines(country_code: str):
+def get_default_country_top_headlines():
     """
     Get the articles of a specified country.
 
-    :param country_code: A string
     :precondition: country_code must be a well-formed string
-    :postcondition: Successfully get the news articles of a specified country.
+    :postcondition: Successfully get the news articles of the user's current country location.
     """
+    country_code = default_country.get_default_country(default_country.get_ip())
+
     country_news_info = verify_news_api_response("https://newsapi.org/v2/top-headlines?country="
                                                  + country_code + "&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
@@ -54,7 +56,11 @@ def display_headline_title(articles: list):
 def get_user_view_choice():
     """
     Get user's choice if they want to view an article.
-    :return:
+
+    :precondition: User's input must be an integer
+    :postcondition: Successfully invoke the get_user_article_choice function
+
+    :return: The value returned from get_user_article_choice as an integer or None
     """
     try:
         view = int(input("\nDo you want to view an article? 1 - Yes, 2 - No: "))
@@ -70,7 +76,11 @@ def get_user_view_choice():
 def get_user_article_choice():
     """
     Get user's choice on which article they want to view.
-    :return:
+
+    :precondition: User's input must be an integer
+    :postcondition: Successfully return user's input as an integer
+
+    :return: User's choice of article number as an integer
     """
     try:
         article_num = int(input("Which article would you like to view?: "))
@@ -85,7 +95,11 @@ def get_user_article_choice():
 
 
 def view_article_in_browser(url):
+    """
+    Open the article URL in user's default web browser.
+
+    :param url: A string
+    :precondition: url must be a well-formed string
+    :postcondition: Successfully open the article URL in user's default web browser
+    """
     webbrowser.open_new(url)
-
-
-get_country_top_headlines('ca')
