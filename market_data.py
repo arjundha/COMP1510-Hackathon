@@ -4,7 +4,7 @@ import textwrap
 
 def ask_for_stock():
     """
-    Ask user for stock name
+    Ask user for stock name.
 
     :precondition: user_input must be a valid abbreviated stock name
     :postcodition: will return user_input as a parameter of check_with_user to check if user_input meets conditions
@@ -15,6 +15,14 @@ def ask_for_stock():
 
 
 def check_with_user(stock):
+    """
+    Check if stock is valid.
+
+    :param stock: abbreviated stock name
+    :precondition: stock must be a string
+    :precondition: user_input must be a number that corresponds with the options given
+    :return: a function that corresponds with user_input
+    """
     while True:
         try:
             ticker = yf.Ticker(stock)
