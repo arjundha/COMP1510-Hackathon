@@ -106,6 +106,14 @@ def enter_income() -> int:
 
 
 def enter_country() -> str:
+    """
+    Determine what country a user is residing in.
+
+    :precondition: User enters a string representing a country when prompted
+    :postcondition: Will return the country as a string to be sued in object construction
+    :raise ValueError when a user enters an empty string
+    :return: a string representing the country where a user lives
+    """
     while True:
         try:
             country = input("What is your country of residence?: ")
