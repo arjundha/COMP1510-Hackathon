@@ -50,21 +50,16 @@ Business Summary:
     """)
     for line in word_list:
         print(line)
+    print("\n")
+    input("Hit any button to continue\n")
+
     while True:
-        user_input = input("1: Enter another stock?\n2: back to menu\n3: quit")
-        if user_input == 1:
+        user_input = input("1: Enter another stock?\n2: Back to menu\n3: Quit")
+        if user_input == '1':
             return ask_for_stock()
-        elif user_input == 2:
+        elif user_input == '2':
             return
-        elif user_input == 3:
+        elif user_input == '3':
             quit()
         else:
-            print("Sorry please choose 1 of the 3 options")
-
-
-def main():
-    ask_for_stock()
-
-
-if __name__ == '__main__':
-    main()
+            print("Sorry please choose 1 of the 3 options.\n")
