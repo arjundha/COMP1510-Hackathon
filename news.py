@@ -72,7 +72,7 @@ def get_user_article_choice():
     except ValueError as e:
         print(e)
     else:
-        return
+        return article_num
 
 
 get_country_top_headlines('ca')
