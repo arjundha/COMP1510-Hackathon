@@ -28,7 +28,7 @@ def verify_news_api_response(url: str) -> dict:
 
 def get_default_country_top_headlines():
     """
-    Get the articles of a specified country.
+    Get the articles of user's current country location.
 
     :precondition: country_code must be a well-formed string
     :postcondition: Successfully get the news articles of the user's current country location.
