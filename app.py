@@ -143,6 +143,7 @@ def main():
     Run program.
     """
     user = user_generation.create_user()
+    user_generation.check_if_user_information_is_correct(user)
 
     while True:
         user_choice = option_menu()
