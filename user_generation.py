@@ -7,15 +7,14 @@ import re
 
 
 def create_user():
-    name = create_name()
+    # name = create_name()
     age = create_age()
 
 
 def create_name():
-    name = input("What is your first and last name? (ex. Chris Thompson): ")
     sentinel = False
     while not sentinel:
-        name = input("What is your first and last name? (ex. Chris Thompson): ")
+        name = input("What is your first and last name? (ex. Chris Thompson): ").strip()
         sentinel = validate_name(name)
 
     print("Pleasure to meet you, %s." % name)
@@ -30,7 +29,19 @@ def validate_name(name):
 
 
 def create_age():
+    while True:
+        age = input("What is your current age?: ")
+        try:
+            age = int(age)
 
+            if age <= 0:
+                raise ValueError
+
+        except ValueError:
+            print("Please enter your age as a positive integer.")
+
+        else:
+            return age
 
 
 def main():
