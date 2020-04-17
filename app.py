@@ -21,8 +21,9 @@ def option_menu():
     
     3. News Articles
     
-    4. Quit\n
-    """))
+    4. Quit
+    
+    >>>"""))
 
 
 def menu_handler(user_input):

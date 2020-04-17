@@ -49,7 +49,3 @@ def main():
     print_ip(ip_address)
     default_country = get_default_country(ip_address)
     print_default_country(default_country)
-
-
-if __name__ == "__main__":
-    main()
