@@ -25,17 +25,23 @@ def check_with_user(stock):
     """
     while True:
         try:
+            # Declare ticker
             ticker = yf.Ticker(stock)
         except ImportError:
+            # Except error and inform user
             print("We can't find the stock entered..")
             print("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
         else:
+            # Clarify with user
             print("Is this the desired Company?")
             print(ticker.info['longName'])
             user_input = input("1. Yes\n2. No\n")
+
             if user_input == '1':
+                # Display info
                 return display_info(ticker.info)
             elif user_input == '2':
+                # Repeat if user is not satisfied
                 "Make sure you enter the abbreviated stock name correctly"
                 return ask_for_stock()
 
@@ -50,11 +56,13 @@ def display_info(stock_ticker):
     :postcondition: will neatly print all information regarding the stock and return nothing or ask_user()
     :return: None or ask_user depending on user_input
     """
+    # Initialize the summary for text wrap
     summary = stock_ticker['longBusinessSummary']
-
+    # Create the wrapper and word list to display later
     wrapper = textwrap.TextWrapper(width=100)
-
     word_list = wrapper.wrap(text=summary)
+
+    # Print information regarding stock_ticker
     print(f"""
 {stock_ticker['shortName']}    {stock_ticker['currency']}           
 _______________________________________________________
@@ -72,11 +80,14 @@ Dividend Yield:     {float(stock_ticker['dividendYield']) * 100}%
 
 Business Summary:
     """)
+    # Print summary corresponding to the textwrap
     for line in word_list:
         print(line)
     print("\n")
+    # Wait for user
     input("Hit any button to continue\n")
 
+    # Ask user what they want to do next
     while True:
         user_input = input("1: Enter another stock?\n2: Back to menu\n3: Quit")
         if user_input == '1':
