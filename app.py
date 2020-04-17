@@ -3,6 +3,7 @@ import json
 import textwrap
 import covid19_stats
 
+
 def menu():
     print("Welcome")
     return int(input("""
