@@ -8,6 +8,7 @@ import re
 
 def create_user():
     name = create_name()
+    age = create_age()
 
 
 def create_name():
@@ -26,6 +27,10 @@ def validate_name(name):
     match_object = name_regex.search(name)
 
     return True if match_object else False
+
+
+def create_age():
+
 
 
 def main():
