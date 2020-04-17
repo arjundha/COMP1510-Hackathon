@@ -27,9 +27,13 @@ def get_country_news(country_code: str):
 
 
 def display_headline_title(articles: list):
-    pass
+    print("These are the top 5 articles of your selected country: \n")
 
-def get_user_article_choice()
+    for article in articles:
+        print(article["title"])
+
+
+def get_user_article_choice():
     pass
 
 get_country_news('ca')
