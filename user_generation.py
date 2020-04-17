@@ -38,7 +38,7 @@ def enter_age():
         try:
             age = int(input("What is your current age?: "))
 
-            if age <= 0:
+            if age < 0:
                 raise ValueError
 
         except ValueError:
@@ -53,7 +53,7 @@ def enter_income():
         try:
             income = int(input("What is your current annual income? (Enter your income as a positive integer): "))
 
-            if income <= 0:
+            if income < 0:
                 raise ValueError
 
         except ValueError:
@@ -64,16 +64,28 @@ def enter_income():
 
 
 def enter_country():
-    country = input("What is your country of residence?: ")
-    return country.strip().title()
+    while True:
+        try:
+            country = input("What is your country of residence?: ")
+            if country.strip() == "":
+                raise ValueError
+
+        except ValueError:
+            print("A country cannot be blank, please try again.")
+
+        else:
+            return country.strip().title()
+
+
+def numbered_list(user_list):
+    for i, thing in enumerate(user_list):
+        print("%d: %s" % (i + 1, thing))
 
 
 def is_student():
-    options = ["Yes", "No"]
-
     print("Are you a current post-secondary student?")
-    for i, thing in enumerate(options):
-        print("%d: %s" % (i + 1, thing))
+    numbered_list(["Yes", "No"])
+
 
     while True:
         user_input = input()
@@ -87,14 +99,66 @@ def is_student():
             print("Please enter 1 or 2.")
 
 
-def check_if_user_information_is_correct(user_oject):
-    return None
+def check_if_user_information_is_correct(user_object):
+    print("\nIs this information correct?\n%s\n" % user_object)
+    numbered_list(["Yes", "No"])
+
+    while True:
+        user_input = input()
+        if user_input == "1":
+            print("Great!")
+            break
+
+        elif user_input == "2":
+            edit_user(user_object)
+
+        else:
+            print("Please enter 1 or 2.")
+
+
+def edit_user(new_user):
+    while True:
+        print("\nHere are your options to edit.")
+        numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
+        user_input = input("\nWhat would you like to change? (b to go back): ")
+
+        if user_input in ["1", "2", "3", "4", "5"]:
+            edit_user_info(user_input, new_user)
+            print("\nUPDATED:\n%s" % new_user)
+
+        elif user_input == "b":
+            break
+
+
+def edit_user_info(user_input, new_user):
+    if user_input == "1":
+        name = enter_name()
+        new_user.set_name(name)
+
+    elif user_input == "2":
+        age = enter_age()
+        new_user.set_age(age)
+
+    elif user_input == "3":
+        income = enter_income()
+        new_user.set_income(income)
+
+    elif user_input == "4":
+        country = enter_country()
+        new_user.set_country(country)
+
+    elif user_input == "5":
+        student_status = is_student()
+        new_user.set_student(student_status)
+
 
 
 def main():
     doctest.testmod()
     print("Welcome!")
     new_user = create_user()
+    check_if_user_information_is_correct(new_user)
+    print("Nice")
 
 
 
