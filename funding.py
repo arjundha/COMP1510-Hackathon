@@ -6,6 +6,7 @@ import webbrowser
 import user
 import doctest
 
+
 def verify_for_funding(user_object):
     verification = {"Country": verify_country(user_object), "Age": verify_age(user_object),
                     "Income": verify_income(user_object)}
@@ -41,14 +42,30 @@ def verify_province():
 
 
 def verify_if_student(user_object):
+    """
+    Verify if a user is a current post-secondary student.
+
+    :param user_object: a User object being verified for student enrollment
+    :return: True if the user is a student, else False
+    """
     return True if user_object.get_student() else False
 
 
 def open_link(url):
+    """
+    Open a URL link in the user's default browser.
+
+    :param url: a well-formed URL to be opened in the browser.
+    :precondition: the URL is an active page that can be opened by a browser
+    :postcondition: will open a webpage in the useer's default browser
+    """
     webbrowser.open_new(url)
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
     verify_for_funding(user.User("Jessica Hong", 23, 0, "Canada", True))
 
