@@ -39,7 +39,7 @@ def print_default_country(default_country):
 
     :param default_country: the country code of the user's current location
     :precondition: default_country is a well formed country code
-    :postcondition: the user's default country code has been printed
+    :postcondition: the user's default country code has been successfully printed
     """
     print(f"default country is: {default_country}")
 
