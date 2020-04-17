@@ -4,7 +4,7 @@ import textwrap
 import covid19_stats
 
 
-def menu():
+def option_menu():
     """
     Ask user to choose option.
 
@@ -105,7 +105,7 @@ def main():
     Run program
     """
     while True:
-        x = menu()
+        x = option_menu()
         try:
             menu_handler(x)
         except TypeError:
