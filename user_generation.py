@@ -144,19 +144,23 @@ def is_student() -> bool:
     :postcondition: Will allow users the chance to declare their student status
     :return: a Boolean representing whether a user is a student or not (True if they are)
     """
+    #  Prompt users to choose options 1 or 2 from an enumerated list (Yes or No)
+    #  This is in regards to whether they are a current post-secondary student or not
+
     print("Are you a current post-secondary student?")
     numbered_list(["Yes", "No"])
 
     while True:
-        user_input = input()
-        if user_input == "1":
+        user_input = input()  # take user input here
+
+        if user_input == "1":  # If 1 (Yes) return True
             return True
 
-        elif user_input == "2":
+        elif user_input == "2":  # If 2 (No) return False
             return False
 
         else:
-            print("Please enter 1 or 2.")
+            print("Please enter 1 or 2.")  # If the user didn't enter a valid option, keep them in the while-loop
 
 
 def check_if_user_information_is_correct(user_object: object):
