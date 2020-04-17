@@ -52,6 +52,15 @@ def verify_age(user_object):
 
 
 def verify_income(user_object):
+    """
+    Verify user's income status.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's income is 5000 or more
+
+    :return: A boolean if income is more than 5000, otherwise invoke verify_if_student function
+    """
     if user_object.get_income() >= 5000:
         return True
     else:
