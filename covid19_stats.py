@@ -18,7 +18,8 @@ def global_stats():
 
 
 def get_country_stats(country):
-    return next(item for item in get('https://api.covid19api.com/summary')['Countries'] if item["Slug"] == country)
+    return next(item for item in get('https://api.covid19api.com/summary')['Countries'] if
+                item["Country"].lower() == country.strip().lower())
 
 
 def main():

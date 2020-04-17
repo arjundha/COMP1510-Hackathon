@@ -64,7 +64,8 @@ def my_country(user):
     :postcondition: will display all information regarding the user's inputted location
     """
     print(user.get_country())
-    country_stats = covid19_stats.get_country_stats(user.get_country().lower())
+    # Get Country stats by passing it to get_country_stats
+    country_stats = covid19_stats.get_country_stats(user.get_country())
     display_statistics(country_stats)
 
 
@@ -85,13 +86,14 @@ def country_search():
     :postcondition: will display the information regarding the entered country
     :except: StopIteration if input is not a valid country
     """
-    country = input("Please input country\n").strip().lower()
+    country = input("Please input country\n").strip()
 
     try:
         country_statistics = covid19_stats.get_country_stats(country)
 
     except StopIteration:
-        print("Sorry, Your input is not a valid country")
+        print("Sorry, Your input is not a valid country\n")
+        print("Try typing the full name of the country. Ex: United States -> United States of America")
 
     else:
         print(country)
