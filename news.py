@@ -11,6 +11,7 @@ def print_messages(original_func):
         print("\nLoading...")
         original_func(*args, **kwargs)
         print("Load successful!")
+
     return wrapper_printer
 
 
@@ -24,6 +25,27 @@ def verify_news_api_response(url: str) -> dict:
         print(e)
     else:
         return json.loads(response.text)
+
+
+def display_news_articles_menu():
+    try:
+        user_input = int(input(
+            "1. General news about your current location\n"
+            "2. COVID-19 related global news\n"
+            "3. Search by keyword\n"))
+    except ValueError:
+        print("Invalid input! Try again.")
+    else:
+        if 1 <= user_input <= 3:
+            menu_handler(user_input)
+        else:
+            print("Invalid input! Try again.")
+            display_news_articles_menu()
+
+
+def menu_handler(user_input):
+    if user_input == 1:
+        get_default_country_top_headlines()
 
 
 def get_default_country_top_headlines():
@@ -61,7 +83,7 @@ def display_headline_title(articles: list):
         view_article_in_browser(articles[view_choice - 1]['url'])
 
 
-def get_user_article_choice():
+def get_user_article_choice() -> int:
     """
     Get user's choice on which article they want to view.
 
