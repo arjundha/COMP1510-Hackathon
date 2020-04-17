@@ -9,3 +9,7 @@ Team 1 for the COMP 1510 Hackathon Final Exam.
 | Hudson McManus | A01190462 | hudsonmcmanus |
 | Jessica Hong | A01085702 | jeessicahong |
 | Duncan Keen | A01185666 | dkeen10 |
+
+Getting Started
+===============
+1. pip install ip2geotools
