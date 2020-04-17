@@ -39,6 +39,15 @@ def verify_country(user_object):
 
 
 def verify_age(user_object):
+    """
+    Verify user's age.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's age is 15 or more
+
+    :return: A boolean if user_object's age is 15 or more
+    """
     return True if user_object.get_age() >= 15 else False
 
 
