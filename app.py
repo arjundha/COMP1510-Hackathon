@@ -75,6 +75,13 @@ def global_statistics():
 
 
 def display_statistics(statistics):
+    """
+    Display statistics from given dictionary.
+
+    :param statistics: covid19 dictionary
+    :preconditions: statistics must be a well formatted covid19 API dictionary
+    :postconditions: Will display details statistics regarding the specified dictionary
+    """
     print(f"""
         New Confirmed Cases:    {statistics["NewConfirmed"]}
 
