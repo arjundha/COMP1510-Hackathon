@@ -164,7 +164,13 @@ def is_student() -> bool:
 
 
 def check_if_user_information_is_correct(user_object: object):
+    """
+    Confirm if a User object is accurate.
 
+    :param user_object: A User object being checked for accuracy
+    :precondition: object is a User object
+    :postcondition: will offer user's the chance to review their User object
+    """
     # Display the User object, and print a list of options
     print("\nIs this information correct?\n%s\n" % user_object)
     numbered_list(["Yes", "No"])
