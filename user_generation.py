@@ -164,59 +164,102 @@ def is_student() -> bool:
 
 
 def check_if_user_information_is_correct(user_object: object):
+    """
+    Confirm if a User object is accurate.
+
+    :param user_object: A User object being checked for accuracy
+    :precondition: object is a User object
+    :postcondition: will offer user's the chance to review their User object
+    """
+    # Display the User object, and print a list of options
     print("\nIs this information correct?\n%s\n" % user_object)
     numbered_list(["Yes", "No"])
 
-    sentinel = False
+    sentinel = False  # Sentinel value for breaking out of the loop
+
     while not sentinel:
-        user_input = input().strip()
+        user_input = input().strip()  # Get user input and strip it
+
         if user_input == "1":
+            # If the information is verified as being correct, break out of the loop via sentinel value
             print("Great!")
             sentinel = True
 
         elif user_input == "2":
+            # If the information is incorrect, offer users the chance to alter the information then
+            # exit the loop
             edit_user(user_object)
             sentinel = True
 
         else:
+            # Remain in the loop until either a 1 or a 2 is typed by the user
             print("Please enter 1 or 2.")
 
 
 def edit_user(new_user: object):
-    sentinel = False
+    """
+    Alter the information in a User object
+
+    :param new_user: A User object to be edited
+    :precondition: object entered as a parameter is a User object
+    :postcondition: Will allow users to edit the object
+    """
+    sentinel = False  # Sentinel value, when this changes to True, the while loop will end
+
     while not sentinel:
         print("\nHere are your options to edit.")
+
+        # Display a numbered list of the options below for user editing
         numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
+
+        # Ask the user which option they would like to change, or press 'b' to exit the loop
         user_input = input("\nWhat would you like to change? (b to go back): ").strip()
 
+        # If the input is 1, 2, 3, 4, or 5, it'll be matched with the elements in the set and the user will edit the obj
         if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
             edit_user_info(user_input, new_user)
+
+            # Display updated User object
             print("\nUPDATED:\n%s" % new_user)
 
+        # End the loop upon "b"
         elif user_input == "b":
             sentinel = True
 
 
-def edit_user_info(user_input: str, new_user):
+def edit_user_info(user_input: str, user_object):
+    """
+    Set new values for the attributed in a User object based on user input.
+
+    :param user_input: A number corresponding to which object attribute will be changed
+    :param user_object: A User object being edited with a setter
+    :precondition: User has entered the correct input number for which attribute they wish to change
+    :postcondition: Will use a setter to edit the value of an attribute in the User object
+    """
+    # Input of 1 will initiate the setter to change the object attribute "name"
     if user_input == "1":
         name = enter_name()
-        new_user.set_name(name)
+        user_object.set_name(name)
 
+    # Input of 2 will initiate the setter to change the object attribute "age"
     elif user_input == "2":
         age = enter_age()
-        new_user.set_age(age)
+        user_object.set_age(age)
 
+    # Input of 3 will initiate the setter to change the object attribute "income"
     elif user_input == "3":
         income = enter_income()
-        new_user.set_income(income)
+        user_object.set_income(income)
 
+    # Input of 4 will initiate the setter to change the object attribute "country"
     elif user_input == "4":
         country = enter_country()
-        new_user.set_country(country)
+        user_object.set_country(country)
 
+    # Input of 5 will initiate the setter to change the object attribute "student"
     elif user_input == "5":
         student_status = is_student()
-        new_user.set_student(student_status)
+        user_object.set_student(student_status)
 
 
 def numbered_list(user_list: list):
