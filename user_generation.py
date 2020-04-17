@@ -197,16 +197,26 @@ def check_if_user_information_is_correct(user_object: object):
 
 
 def edit_user(new_user: object):
-    sentinel = False
+
+    sentinel = False  # Sentinel value, when this changes to True, the while loop will end
+
     while not sentinel:
         print("\nHere are your options to edit.")
+
+        # Display a numbered list of the options below for user editing
         numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
+
+        # Ask the user which option they would like to change, or press 'b' to exit the loop
         user_input = input("\nWhat would you like to change? (b to go back): ").strip()
 
+        # If the input is 1, 2, 3, 4, or 5, it'll be matched with the elements in the set and the user will edit the obj
         if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
             edit_user_info(user_input, new_user)
+
+            # Display updated User object
             print("\nUPDATED:\n%s" % new_user)
 
+        # End the loop upon "b"
         elif user_input == "b":
             sentinel = True
 
