@@ -1,6 +1,5 @@
 import requests
-import json
-import textwrap
+import market_data
 import covid19_stats
 import news
 import user_generation
@@ -25,8 +24,10 @@ def option_menu():
         3. Search by Country
 
         4. News Articles
+        
+        5. Search Stock
 
-        5. Quit
+        6. Quit
 
 \n"""))
 
@@ -55,9 +56,15 @@ def menu_handler(user_input, user):
     if user_input == 4:
         return get_news()
     if user_input == 5:
+        search_stocks()
+    if user_input == 6:
         quit()
     else:
         raise TypeError
+
+
+def search_stocks():
+    market_data.ask_for_stock()
 
 
 def my_country(user):
