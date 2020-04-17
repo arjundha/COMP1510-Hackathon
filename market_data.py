@@ -41,6 +41,15 @@ def check_with_user(stock):
 
 
 def display_info(stock_ticker):
+    """
+    Display stock information.
+
+    :param stock_ticker: a yFinance stock dictionary
+    :precondition: stock_ticker must be a well formatted yFinance dictionary
+    :precondition: user_input must be a number that corresponds with the options given
+    :postcondition: will neatly print all information regarding the stock and return nothing or ask_user()
+    :return: None or ask_user depending on user_input
+    """
     summary = stock_ticker['longBusinessSummary']
 
     wrapper = textwrap.TextWrapper(width=100)
