@@ -3,6 +3,13 @@ import textwrap
 
 
 def ask_for_stock():
+    """
+    Ask user for stock name
+
+    :precondition: user_input must be a valid abbreviated stock name
+    :postcodition: will return user_input as a parameter of check_with_user to check if user_input meets conditions
+    :return: user_input as a string and as a parameter of check_with_user
+    """
     user_input = input("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
     return check_with_user(user_input)
 
