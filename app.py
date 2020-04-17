@@ -5,6 +5,13 @@ import covid19_stats
 
 
 def menu():
+    """
+    Ask user to choose option.
+
+    :precondition: input must be a number that corresponds with an option
+    :postcondition: will return the user's choice as an int
+    :return: input as an int
+    """
     print("Welcome")
     return int(input("""
     1. Global Statistics
@@ -16,6 +23,15 @@ def menu():
 
 
 def menu_handler(user_input):
+    """
+    Return function that corresponds you user_input.
+
+    :param user_input: a user entered integer
+    :precondition: user_input must be an integer that corresponds with an option
+    :postcondition: will return the function that corresponds with desired option
+    :raise: TypeError if user_input does not correspond with and option
+    :return: a function that corresponds with user_input
+    """
     if user_input == 1:
         return global_statistics()
     if user_input == 2:
