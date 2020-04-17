@@ -17,30 +17,38 @@ def menu_handler(user_input):
         return global_statistics()
     if user_input == 2:
         return country_search()
+    else:
+        raise TypeError
 
 
 def country_search():
-    country = input("Please input country\n")
+    country = input("Please input country\n").strip().lower()
 
     all_countries = get('https://api.covid19api.com/summary')
 
     countries_dictionary = all_countries["Countries"]
 
-    country = next(item for item in countries_dictionary if item["Slug"] == country)
-    print(f"""
-        New Confirmed Cases:    {country["NewConfirmed"]}
+    try:
+        country = next(item for item in countries_dictionary if item["Slug"] == country)
+    except StopIteration:
+        print("Sorry, Your input is not a valid country")
+    else:
+        print(f"""
+            New Confirmed Cases:    {country["NewConfirmed"]}
 
-        Total Confirmed:        {country["TotalConfirmed"]}
+            Total Confirmed:        {country["TotalConfirmed"]}
 
-        New Deaths:             {country["NewDeaths"]}
+            New Deaths:             {country["NewDeaths"]}
 
-        Total Deaths:           {country["TotalDeaths"]}
+            Total Deaths:           {country["TotalDeaths"]}
 
-        Newly Recovered:        {country["NewRecovered"]}
+            Newly Recovered:        {country["NewRecovered"]}
 
-        Total Recovered:        {country["TotalRecovered"]}
+            Total Recovered:        {country["TotalRecovered"]}
 
-        \n""")
+            \n""")
+
+        input("Hit any button to continue")
 
 
 def global_statistics():
@@ -61,6 +69,8 @@ def global_statistics():
 
     \n""")
 
+    input("Hit any button to continue")
+
 
 def get(api_link):
     response = requests.get(api_link)
@@ -69,9 +79,12 @@ def get(api_link):
 
 
 def main():
-    x = menu()
-
-    menu_handler(x)
+    while True:
+        x = menu()
+        try:
+            menu_handler(x)
+        except TypeError:
+            print("Your input was invalid or not an option, try again")
 
 
 if __name__ == '__main__':
