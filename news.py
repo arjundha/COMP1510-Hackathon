@@ -47,30 +47,10 @@ def display_headline_title(articles: list):
     for num, article in enumerate(articles, 1):
         print(num, article["title"])
 
-    view_choice = get_user_view_choice()
+    view_choice = get_user_article_choice()
 
     if view_choice:
         view_article_in_browser(articles[view_choice - 1]['url'])
-
-
-def get_user_view_choice():
-    """
-    Get user's choice if they want to view an article.
-
-    :precondition: User's input must be an integer
-    :postcondition: Successfully invoke the get_user_article_choice function
-
-    :return: The value returned from get_user_article_choice as an integer or None
-    """
-    try:
-        view = int(input("\nDo you want to view an article? 1 - Yes, 2 - No: "))
-    except ValueError as e:
-        print(e)
-    else:
-        if view == 1:
-            return get_user_article_choice()
-        else:
-            return None
 
 
 def get_user_article_choice():
@@ -102,4 +82,5 @@ def view_article_in_browser(url):
     :precondition: url must be a well-formed string
     :postcondition: Successfully open the article URL in user's default web browser
     """
+    print("The news article has opened in your web-browser")
     webbrowser.open_new(url)
