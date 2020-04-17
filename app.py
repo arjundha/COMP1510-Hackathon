@@ -12,6 +12,11 @@ def menu():
     """)
 
 
+def menu_handler(user_input):
+    if int(user_input) == 1:
+        return global_statistics()
+
+
 def global_statistics():
     global_dict = get('https://api.covid19api.com/summary')
     statistics = global_dict['Global']
@@ -38,7 +43,9 @@ def get(api_link):
 
 
 def main():
-    print()
+    x = menu()
+
+    menu_handler(x)
 
 
 if __name__ == '__main__':
