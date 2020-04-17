@@ -116,19 +116,22 @@ def enter_country() -> str:
     """
     while True:
         try:
+            # Prompt user to enter their country
             country = input("What is your country of residence?: ")
-            if country.strip() == "":
-                raise ValueError
+            if country.strip() == "":  # Check to see if the country is an empty string
+                raise ValueError  # Raise an error if it empty
 
-        except ValueError:
+        except ValueError:  # Catch the ValueError and print a helpful message
             print("A country cannot be blank, please try again.")
 
         else:
             try:
-                covid19_stats.get_country_stats(country)
-            except StopIteration:
+                covid19_stats.get_country_stats(country)  # Check to see if a country exists in the covid19_stats API
+
+            except StopIteration:  # Catch the StopIteration error and print helpful messages
                 print("Im sorry we dont recognize this country.")
                 print("Try typing the full name of the country. Ex: United States -> United States of America")
+
             else:
                 return country.strip().title()
 
