@@ -8,8 +8,12 @@ import re
 
 def create_user():
     name = enter_name()
-    # age = enter_age()
+    age = enter_age()
     income = enter_income()
+    country = enter_country()
+    student_status = is_student()
+
+    return user.User(name, age, income, country, student_status)
 
 
 def enter_name():
@@ -71,13 +75,22 @@ def is_student():
     for i, thing in enumerate(options):
         print("%d: %s" % (i + 1, thing))
 
-    user_input =
+    while True:
+        user_input = input()
+        if user_input == "1":
+            return True
+
+        elif user_input == "2":
+            return False
+
+        else:
+            print("Please enter 1 or 2.")
 
 
 def main():
     doctest.testmod()
     print("Welcome!")
-    create_user()
+    new_user = create_user()
 
 
 if __name__ == '__main__':
