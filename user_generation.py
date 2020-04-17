@@ -60,18 +60,22 @@ def validate_name(name: str) -> bool:
 
 def enter_age() -> int:
     """
+    Determine the age of a user.
 
-    :return:
+    :precondition: User enters a positive integer when prompted.
+    :postcondition: Will determine the age of a user.
+    :raise ValueError when a user enters age less than or equal to 0
+    :return: User age as an int
     """
     while True:
         try:
-            age = int(input("What is your current age?: "))
+            age = int(input("What is your current age?: "))  # Ask the user for their age
 
-            if age < 0:
-                raise ValueError
+            if age <= 0:
+                raise ValueError  # Raise a value error if the age is less than or equal to 0
 
-        except ValueError:
-            print("Please enter your age as a positive integer.")
+        except ValueError:  # Catch a ValueError
+            print("Please enter your age as a positive integer.")  # Prints a helpful message upon a ValueError
 
         else:
             return age
@@ -110,11 +114,6 @@ def enter_country() -> str:
                 print("Try typing the full name of the country. Ex: United States -> United States of America")
             else:
                 return country.strip().title()
-
-
-def numbered_list(user_list: list):
-    for i, thing in enumerate(user_list):
-        print("%d: %s" % (i + 1, thing))
 
 
 def is_student() -> bool:
@@ -187,6 +186,11 @@ def edit_user_info(user_input: str, new_user):
     elif user_input == "5":
         student_status = is_student()
         new_user.set_student(student_status)
+
+
+def numbered_list(user_list: list):
+    for i, thing in enumerate(user_list):
+        print("%d: %s" % (i + 1, thing))
 
 
 def main():
