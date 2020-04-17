@@ -92,6 +92,8 @@ def display_statistics(statistics):
     :postconditions: Will display details statistics regarding the specified dictionary
     """
     print(f"""
+        Total Active Cases:     {statistics["TotalConfirmed"] - statistics["TotalDeaths"] - statistics["TotalRecovered"]}
+    
         New Confirmed Cases:    {statistics["NewConfirmed"]}
 
         Total Confirmed:        {statistics["TotalConfirmed"]}
