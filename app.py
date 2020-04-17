@@ -25,7 +25,7 @@ def option_menu():
 
         4. News Articles
         
-        5. Search Stock
+        5. Search Stocks
 
         6. Quit
 
