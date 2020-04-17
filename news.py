@@ -123,3 +123,4 @@ def view_article_in_browser(url):
     :postcondition: Successfully open the article URL in user's default web browser
     """
     webbrowser.open_new(url)
+    input("Hit any button to continue")
