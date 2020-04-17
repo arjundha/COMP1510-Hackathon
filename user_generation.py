@@ -65,7 +65,13 @@ def enter_country():
 
 
 def is_student():
+    options = ["Yes", "No"]
 
+    print("Are you a current post-secondary student?")
+    for i, thing in enumerate(options):
+        print("%d: %s" % (i + 1, thing))
+
+    user_input =
 
 
 def main():
