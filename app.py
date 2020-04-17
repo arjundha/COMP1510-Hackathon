@@ -2,9 +2,10 @@ import requests
 import json
 import textwrap
 import covid19_stats
+import news
 
 
-def menu():
+def option_menu():
     """
     Ask user to choose option.
 
@@ -18,7 +19,9 @@ def menu():
 
     2. Search by Country
     
-    3. Quit\n
+    3. News Articles
+    
+    4. Quit\n
     """))
 
 
@@ -37,9 +40,15 @@ def menu_handler(user_input):
     if user_input == 2:
         return country_search()
     if user_input == 3:
+        return get_news()
+    if user_input == 4:
         quit()
     else:
         raise TypeError
+
+
+def get_news():
+    news.get_default_country_top_headlines()
 
 
 def country_search():
@@ -75,6 +84,13 @@ def global_statistics():
 
 
 def display_statistics(statistics):
+    """
+    Display statistics from given dictionary.
+
+    :param statistics: covid19 dictionary
+    :preconditions: statistics must be a well formatted covid19 API dictionary
+    :postconditions: Will display details statistics regarding the specified dictionary
+    """
     print(f"""
         New Confirmed Cases:    {statistics["NewConfirmed"]}
 
@@ -94,10 +110,13 @@ def display_statistics(statistics):
 
 
 def main():
+    """
+    Run program
+    """
     while True:
-        x = menu()
+        user_choice = option_menu()
         try:
-            menu_handler(x)
+            menu_handler(user_choice)
         except TypeError:
             print("Your input was invalid or not an option, try again")
 
