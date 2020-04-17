@@ -7,34 +7,62 @@ import re
 import covid19_stats
 
 
-def create_user():
-    name = enter_name()
-    age = enter_age()
-    income = enter_income()
-    country = enter_country()
-    student_status = is_student()
+def create_user() -> object:
+    """
+    Assemble variables and create a User object.
+
+    :precondition: User will enter valid data when prompted
+    :postcondition: Will create a User object
+    :return: A well-formed User object
+    """
+    name = enter_name()  # Get user's name as a string
+    age = enter_age()  # Get user's age a positive integer
+    income = enter_income()  # Get user's annual income as a positive integer
+    country = enter_country()  # Determine the country of residence for a user
+    student_status = is_student()  # Determine if the user is a post-secondary student
 
     return user.User(name, age, income, country, student_status)
 
 
-def enter_name():
-    sentinel = False
-    while not sentinel:
-        name = input("What is your first and last name? (ex. Chris Thompson): ").strip()
-        sentinel = validate_name(name)
+def enter_name() -> str:
+    """
+    Determine a user's name.
 
-    print("Pleasure to meet you, %s." % name)
+    :precondition: Enter your first and last name
+    :postcondition: Will prepare the name for object assembly
+    :return: User's name as a string
+    """
+    sentinel = False  # Sentinel value for checking if a name is valid or not
+
+    while not sentinel:
+        name = input("What is your first and last name? (ex. Chris Thompson): ").strip().title()  # title case & strip
+        sentinel = validate_name(name)  # Uses a ReGex check to determine if the name is valid, if it is, breaks loop
+
+    print("Pleasure to meet you, %s." % name)  # Greet the user by name
     return name
 
 
-def validate_name(name):
-    name_regex = re.compile(r'^[A-Z][a-zA-Z]* [A-Z][a-zA-Z]*$')  # First name starts with a capital then any letter
-    match_object = name_regex.search(name)
+def validate_name(name: str) -> bool:
+    """
+    Determine whether a user's name is valid/formed correctly.
+
+    :param name: Name of a user being checked for accurate formation
+    :precondtion: The name parameter is a string
+    :postcondition: Will attempt to match the name against the ReGex
+    :return: A boolean True if it is a matched name, False if it is not
+    """
+    # REGEX EXAMPLE IS HERE
+    name_regex = re.compile(r'^[A-Z][a-zA-Z\-]* [A-Z][a-zA-Z\-]*$')  # ReGex for checking name formation
+    match_object = name_regex.search(name)  # Check if the name matches the ReGex (True if it does)
 
     return True if match_object else False
 
 
-def enter_age():
+def enter_age() -> int:
+    """
+
+    :return:
+    """
     while True:
         try:
             age = int(input("What is your current age?: "))
@@ -49,7 +77,7 @@ def enter_age():
             return age
 
 
-def enter_income():
+def enter_income() -> int:
     while True:
         try:
             income = int(input("What is your current annual income? (Enter your income as a positive integer): "))
@@ -64,7 +92,7 @@ def enter_income():
             return income
 
 
-def enter_country():
+def enter_country() -> str:
     while True:
         try:
             country = input("What is your country of residence?: ")
@@ -84,12 +112,12 @@ def enter_country():
                 return country.strip().title()
 
 
-def numbered_list(user_list):
+def numbered_list(user_list: list):
     for i, thing in enumerate(user_list):
         print("%d: %s" % (i + 1, thing))
 
 
-def is_student():
+def is_student() -> bool:
     print("Are you a current post-secondary student?")
     numbered_list(["Yes", "No"])
 
@@ -105,38 +133,41 @@ def is_student():
             print("Please enter 1 or 2.")
 
 
-def check_if_user_information_is_correct(user_object):
+def check_if_user_information_is_correct(user_object: object):
     print("\nIs this information correct?\n%s\n" % user_object)
     numbered_list(["Yes", "No"])
 
-    while True:
+    sentinel = False
+    while not sentinel:
         user_input = input()
         if user_input == "1":
             print("Great!")
-            break
+            sentinel = True
 
         elif user_input == "2":
             edit_user(user_object)
+            sentinel = True
 
         else:
             print("Please enter 1 or 2.")
 
 
-def edit_user(new_user):
-    while True:
+def edit_user(new_user: object):
+    sentinel = False
+    while not sentinel:
         print("\nHere are your options to edit.")
         numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
         user_input = input("\nWhat would you like to change? (b to go back): ")
 
-        if user_input in ["1", "2", "3", "4", "5"]:
+        if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
             edit_user_info(user_input, new_user)
             print("\nUPDATED:\n%s" % new_user)
 
         elif user_input == "b":
-            break
+            sentinel = True
 
 
-def edit_user_info(user_input, new_user):
+def edit_user_info(user_input: str, new_user):
     if user_input == "1":
         name = enter_name()
         new_user.set_name(name)
