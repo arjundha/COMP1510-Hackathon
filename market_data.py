@@ -85,7 +85,7 @@ Business Summary:
         print(line)
     print("\n")
     # Wait for user
-    input("Hit any button to continue\n")
+    input("Hit enter to continue\n")
 
     # Ask user what they want to do next
     while True:
