@@ -7,11 +7,12 @@ import re
 
 
 def create_user():
-    # name = create_name()
-    age = create_age()
+    name = enter_name()
+    # age = enter_age()
+    income = enter_income()
 
 
-def create_name():
+def enter_name():
     sentinel = False
     while not sentinel:
         name = input("What is your first and last name? (ex. Chris Thompson): ").strip()
@@ -28,7 +29,7 @@ def validate_name(name):
     return True if match_object else False
 
 
-def create_age():
+def enter_age():
     while True:
         try:
             age = int(input("What is your current age?: "))
@@ -41,6 +42,25 @@ def create_age():
 
         else:
             return age
+
+
+def enter_income():
+    while True:
+        try:
+            income = int(input("What is your current annual income? (Enter your income as a positive integer): "))
+
+            if income <= 0:
+                raise ValueError
+
+        except ValueError:
+            print("Please enter your income as a positive integer.")
+
+        else:
+            return income
+
+
+def enter_country():
+    return None
 
 
 def main():
