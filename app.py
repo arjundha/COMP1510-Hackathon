@@ -155,7 +155,7 @@ def display_statistics(statistics):
 
         \n""")
 
-    input("Hit any button to continue")
+    input("Hit enter to continue")
 
 
 def main():
