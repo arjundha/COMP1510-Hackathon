@@ -228,7 +228,14 @@ def edit_user(new_user: object):
 
 
 def edit_user_info(user_input: str, user_object):
+    """
+    Set new values for the attributed in a User object based on user input.
 
+    :param user_input: A number corresponding to which object attribute will be changed
+    :param user_object: A User object being edited with a setter
+    :precondition: User has entered the correct input number for which attribute they wish to change
+    :postcondition: Will use a setter to edit the value of an attribute in the User object
+    """
     # Input of 1 will initiate the setter to change the object attribute "name"
     if user_input == "1":
         name = enter_name()
