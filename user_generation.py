@@ -45,16 +45,23 @@ def validate_name(name: str) -> bool:
     """
     Determine whether a user's name is valid/formed correctly.
 
-    :param name: Name
-    :return:
+    :param name: Name of a user being checked for accurate formation
+    :precondtion: The name parameter is a string
+    :postcondition: Will attempt to match the name against the ReGex
+    :return: A boolean True if it is a matched name, False if it is not
     """
-    name_regex = re.compile(r'^[A-Z][a-zA-Z\-]* [A-Z][a-zA-Z\-]*$')  # First name starts with a capital then any letter
-    match_object = name_regex.search(name)
+    # REGEX EXAMPLE IS HERE
+    name_regex = re.compile(r'^[A-Z][a-zA-Z\-]* [A-Z][a-zA-Z\-]*$')  # ReGex for checking name formation
+    match_object = name_regex.search(name)  # Check if the name matches the ReGex (True if it does)
 
     return True if match_object else False
 
 
 def enter_age() -> int:
+    """
+
+    :return:
+    """
     while True:
         try:
             age = int(input("What is your current age?: "))
@@ -123,31 +130,34 @@ def check_if_user_information_is_correct(user_object: object):
     print("\nIs this information correct?\n%s\n" % user_object)
     numbered_list(["Yes", "No"])
 
-    while True:
+    sentinel = False
+    while not sentinel:
         user_input = input()
         if user_input == "1":
             print("Great!")
-            break
+            sentinel = True
 
         elif user_input == "2":
             edit_user(user_object)
+            sentinel = True
 
         else:
             print("Please enter 1 or 2.")
 
 
 def edit_user(new_user: object):
-    while True:
+    sentinel = False
+    while not sentinel:
         print("\nHere are your options to edit.")
         numbered_list(["Name", "Age", "Income", "Country", "Student Status"])
         user_input = input("\nWhat would you like to change? (b to go back): ")
 
-        if user_input in ["1", "2", "3", "4", "5"]:
+        if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
             edit_user_info(user_input, new_user)
             print("\nUPDATED:\n%s" % new_user)
 
         elif user_input == "b":
-            break
+            sentinel = True
 
 
 def edit_user_info(user_input: str, new_user):
