@@ -43,6 +43,13 @@ def menu_handler(user_input):
 
 
 def country_search():
+    """
+    Search country specific statistics.
+
+    :precondition: country input must be a valid country
+    :postcondition: will display the information regarding the entered country
+    :except: StopIteration if input is not a valid country
+    """
     country = input("Please input country\n").strip().lower()
 
     try:
