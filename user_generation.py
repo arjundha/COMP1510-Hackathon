@@ -227,26 +227,32 @@ def edit_user(new_user: object):
             sentinel = True
 
 
-def edit_user_info(user_input: str, new_user):
+def edit_user_info(user_input: str, user_object):
+
+    # Input of 1 will initiate the setter to change the object attribute "name"
     if user_input == "1":
         name = enter_name()
-        new_user.set_name(name)
+        user_object.set_name(name)
 
+    # Input of 2 will initiate the setter to change the object attribute "age"
     elif user_input == "2":
         age = enter_age()
-        new_user.set_age(age)
+        user_object.set_age(age)
 
+    # Input of 3 will initiate the setter to change the object attribute "income"
     elif user_input == "3":
         income = enter_income()
-        new_user.set_income(income)
+        user_object.set_income(income)
 
+    # Input of 4 will initiate the setter to change the object attribute "country"
     elif user_input == "4":
         country = enter_country()
-        new_user.set_country(country)
+        user_object.set_country(country)
 
+    # Input of 5 will initiate the setter to change the object attribute "student"
     elif user_input == "5":
         student_status = is_student()
-        new_user.set_student(student_status)
+        user_object.set_student(student_status)
 
 
 def numbered_list(user_list: list):
