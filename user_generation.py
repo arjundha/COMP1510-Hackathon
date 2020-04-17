@@ -110,7 +110,7 @@ def enter_country() -> str:
     Determine what country a user is residing in.
 
     :precondition: User enters a string representing a country when prompted
-    :postcondition: Will return the country as a string to be sued in object construction
+    :postcondition: Will return the country as a string to be used in object construction
     :raise ValueError when a user enters an empty string
     :return: a string representing the country where a user lives
     """
@@ -137,6 +137,13 @@ def enter_country() -> str:
 
 
 def is_student() -> bool:
+    """
+    Determine whether a user is a current post-secondary student.
+
+    :precondition: User enters 1 or 2 when prompted
+    :postcondition: Will allow users the chance to declare their student status
+    :return: a Boolean representing whether a user is a student or not (True if they are)
+    """
     print("Are you a current post-secondary student?")
     numbered_list(["Yes", "No"])
 
