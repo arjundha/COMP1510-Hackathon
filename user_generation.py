@@ -235,6 +235,9 @@ def numbered_list(user_list: list):
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
     print("Welcome!")
     new_user = create_user()
