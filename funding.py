@@ -20,14 +20,21 @@ def verify_for_funding(user_object):
                     "Income": verify_income(user_object)}
 
     if all(value for value in verification.values()):
-        print("You are verified! Please follow the instructions in the link that has been opened.")
+        print("You are verified! Please follow the instructions in the link that will open in your browser.")
         time.sleep(2)
         open_link("https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html")
-    else:
-        print("Unfortunately, you are not verified for Canada's government funding!")
 
 
 def verify_country(user_object):
+    """
+    Verify user's country.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's country is Canada
+
+    :return: A boolean if user_object's country is Canada
+    """
     return True if user_object.get_country() == "Canada" else False
 
 
@@ -37,23 +44,28 @@ def verify_age(user_object):
 
 def verify_income(user_object):
     if user_object.get_income() >= 5000:
-        return verify_province()
+        return True
     else:
-        if verify_if_student(user_object):
-            print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
-                  "A link has been opened for your educational viewing.")
-            time.sleep(2)
-            open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+        verify_if_student(user_object)
 
 
 def verify_province():
     user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
 
-    return True if user_province == "BRITISH COLUMBIA" or user_province == "BC" else False
+    if user_province == "BRITISH COLUMBIA" or user_province == "BC":
+        print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
+              "A link has been opened in your browser for your educational viewing.")
+        time.sleep(2)
+        open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+    else:
+        print("Sorry, you are not qualified for government funding in British Columbia!")
 
 
 def verify_if_student(user_object):
-    return True if user_object.get_student() else False
+    if user_object.get_student():
+        verify_province()
+    else:
+        print("Sorry, you are not qualified for government funding!")
 
 
 def open_link(url):
@@ -62,7 +74,7 @@ def open_link(url):
 
 def main():
     doctest.testmod()
-    verify_for_funding(user.User("Jessica Hong", 23, 0, "Canada", True))
+    verify_for_funding(user.User("Jessica Hong", 23, 1000, "Canada", True))
 
 
 if __name__ == '__main__':
