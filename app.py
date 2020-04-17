@@ -49,7 +49,7 @@ def menu_handler(user_input):
 
 
 def get_news():
-    news.get_default_country_top_headlines()
+    news.display_news_articles_menu()
 
 
 def country_search():
