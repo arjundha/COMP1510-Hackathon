@@ -59,22 +59,7 @@ def country_search():
         print("Sorry, Your input is not a valid country")
 
     else:
-        print(f"""
-            New Confirmed Cases:    {country["NewConfirmed"]}
-
-            Total Confirmed:        {country["TotalConfirmed"]}
-
-            New Deaths:             {country["NewDeaths"]}
-
-            Total Deaths:           {country["TotalDeaths"]}
-
-            Newly Recovered:        {country["NewRecovered"]}
-
-            Total Recovered:        {country["TotalRecovered"]}
-
-            \n""")
-
-        input("Hit any button to continue")
+        display_statistics(country)
 
 
 def global_statistics():
@@ -86,20 +71,24 @@ def global_statistics():
     global_dict = covid19_stats.global_stats()
     statistics = global_dict['Global']
 
+    display_statistics(statistics)
+
+
+def display_statistics(statistics):
     print(f"""
-    New Confirmed Cases:    {statistics["NewConfirmed"]}
+        New Confirmed Cases:    {statistics["NewConfirmed"]}
 
-    Total Confirmed:        {statistics["TotalConfirmed"]}
+        Total Confirmed:        {statistics["TotalConfirmed"]}
 
-    New Deaths:             {statistics["NewDeaths"]}
+        New Deaths:             {statistics["NewDeaths"]}
 
-    Total Deaths:           {statistics["TotalDeaths"]}
+        Total Deaths:           {statistics["TotalDeaths"]}
 
-    Newly Recovered:        {statistics["NewRecovered"]}
+        Newly Recovered:        {statistics["NewRecovered"]}
 
-    Total Recovered:        {statistics["TotalRecovered"]}
+        Total Recovered:        {statistics["TotalRecovered"]}
 
-    \n""")
+        \n""")
 
     input("Hit any button to continue")
 
