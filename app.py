@@ -12,6 +12,25 @@ def menu():
     """)
 
 
+def global_statistics():
+    global_dict = get('https://api.covid19api.com/summary')
+    statistics = global_dict['Global']
+    print(f"""
+    New Confirmed Cases:    {statistics["NewConfirmed"]}
+
+    Total Confirmed:        {statistics["TotalConfirmed"]}
+
+    New Deaths:             {statistics["NewDeaths"]}
+
+    Total Deaths:           {statistics["TotalDeaths"]}
+
+    Newly Recovered:        {statistics["NewRecovered"]}
+
+    Total Recovered:        {statistics["TotalRecovered"]}
+
+    """)
+
+
 def get(api_link):
     response = requests.get(api_link)
     response.raise_for_status()
