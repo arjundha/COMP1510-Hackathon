@@ -91,5 +91,4 @@ def view_article_in_browser(url):
     :precondition: url must be a well-formed string
     :postcondition: Successfully open the article URL in user's default web browser
     """
-    # print("The news article has opened in your web-browser")
     webbrowser.open_new(url)
