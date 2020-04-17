@@ -5,6 +5,7 @@ import doctest
 import user
 import re
 import covid19_stats
+import funding
 
 
 def create_user() -> object:
@@ -286,6 +287,7 @@ def main():
     new_user = create_user()
     check_if_user_information_is_correct(new_user)
     print("Nice")
+    funding.verify_for_funding(new_user)
 
 
 if __name__ == '__main__':
