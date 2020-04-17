@@ -91,8 +91,10 @@ def country_search():
     :postcondition: will display the information regarding the entered country
     :except: StopIteration if input is not a valid country
     """
+    # Ask user for input
     country = input("Please input country\n").strip()
 
+    # Check if input meets conditions
     try:
         country_statistics = covid19_stats.get_country_stats(country)
 
@@ -101,6 +103,7 @@ def country_search():
         print("Try typing the full name of the country. Ex: United States -> United States of America")
 
     else:
+        # Display information
         print(country.capitalize())
         display_statistics(country_statistics)
 
@@ -111,9 +114,12 @@ def global_statistics():
 
     :postcondition: will display all statistics for the world
     """
+    # Get the dictionary from from the api
     global_dict = covid19_stats.global_stats()
+    # Specify the key
     statistics = global_dict['Global']
 
+    # Display the information
     display_statistics(statistics)
 
 
@@ -127,7 +133,7 @@ def display_statistics(statistics):
     """
     print(f"""
         Total Active Cases:     {statistics["TotalConfirmed"] - statistics["TotalDeaths"] - statistics["TotalRecovered"]}
-    
+
         New Confirmed Cases:    {statistics["NewConfirmed"]}
 
         Total Confirmed:        {statistics["TotalConfirmed"]}
@@ -149,7 +155,9 @@ def main():
     """
     Run program.
     """
+    # Create user
     user = user_generation.create_user()
+    # Check if user information is correct
     user_generation.check_if_user_information_is_correct(user)
 
     while True:
