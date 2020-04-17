@@ -14,19 +14,24 @@ def option_menu():
     :postcondition: will return the user's choice as an int
     :return: input as an int
     """
-    print("Welcome")
-    return int(input("""
-    1. Global Statistics
+    while True:
+        print("Please select an option, or quit.")
+        try:
+            return int(input("""
+        1. Global Statistics
 
-    2. Information about my Country
+        2. Information about my Country
 
-    3. Search by Country
-    
-    4. News Articles
-    
-    5. Quit
-    
-    >>>\n"""))
+        3. Search by Country
+
+        4. News Articles
+
+        5. Quit
+
+\n"""))
+
+        except ValueError:
+            print("Please input a number that corresponds to an option on the menu.")
 
 
 def menu_handler(user_input, user):
@@ -96,7 +101,7 @@ def country_search():
         print("Try typing the full name of the country. Ex: United States -> United States of America")
 
     else:
-        print(country)
+        print(country.capitalize())
         display_statistics(country_statistics)
 
 
