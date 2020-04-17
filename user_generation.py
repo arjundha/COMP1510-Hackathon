@@ -34,7 +34,7 @@ def enter_name() -> str:
     sentinel = False  # Sentinel value for checking if a name is valid or not
 
     while not sentinel:
-        name = input("What is your first and last name? (ex. Chris Thompson): ").strip().title()
+        name = input("What is your first and last name? (ex. Chris Thompson): ").strip().title()  # title case & strip
         sentinel = validate_name(name)  # Uses a ReGex check to determine if the name is valid, if it is, breaks loop
 
     print("Pleasure to meet you, %s." % name)  # Greet the user by name
