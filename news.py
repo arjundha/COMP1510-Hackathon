@@ -1,4 +1,4 @@
-# e454fda9cf5b4a5d8e6f8bc3d960c7b5
+# API KEY: e454fda9cf5b4a5d8e6f8bc3d960c7b5
 import json
 import textwrap
 import webbrowser
@@ -7,7 +7,6 @@ import requests
 
 def verify_news_api_response(url: str) -> dict:
     response = requests.get(url)
-    response.raise_for_status()
 
     try:
         response.raise_for_status()
@@ -18,7 +17,14 @@ def verify_news_api_response(url: str) -> dict:
         return json.loads(response.text)
 
 
-def get_country_news(country_code: str):
+def get_country_top_headlines(country_code: str):
+    """
+    Get the articles of a specified country.
+
+    :param country_code: A string
+    :precondition: country_code must be a well-formed string
+    :postcondition: Successfully get the news articles of a specified country.
+    """
     country_news_info = verify_news_api_response("https://newsapi.org/v2/top-headlines?country="
                                                  + country_code + "&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
@@ -27,13 +33,46 @@ def get_country_news(country_code: str):
 
 
 def display_headline_title(articles: list):
+    """
+    Display the headline title of the top 5 articles.
+
+    :param articles: A list
+    :precondition: articles must be a well-formed list
+    :postcondition: Successfully display the headline of the top 5 articles
+    """
     print("These are the top 5 articles of your selected country: \n")
 
-    for article in articles:
-        print(article["title"])
+    for num, article in enumerate(articles, 1):
+        print(num, article["title"])
+
+
+def get_user_view_choice():
+    """
+    Get user's choice if they want to view an article.
+    :return:
+    """
+    try:
+        view = int(input("Do you want to view an article? 1 - Yes, 2 - No: "))
+    except ValueError as e:
+        print(e)
+    else:
+        if view == 1:
+            article_choice = get_user_article_choice()
+        else:
+            return
 
 
 def get_user_article_choice():
-    pass
+    """
+    Get user's choice on which article they want to view.
+    :return:
+    """
+    try:
+        article_num = int(input("Which article would you like to view?: "))
+    except ValueError as e:
+        print(e)
+    else:
+        return article_num
 
-get_country_news('ca')
+
+get_country_top_headlines('ca')
