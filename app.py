@@ -4,6 +4,7 @@ import covid19_stats
 import news
 import user_generation
 import funding
+import dow_plot
 
 
 def option_menu():
@@ -30,7 +31,9 @@ def option_menu():
 
         6. Am I Eligible for the Canadian Emergency Response Benefit Funding?
         
-        7. Quit
+        7. Show effect of COVID-19 on DOW Jones Index
+        
+        8. Quit
 
 \n"""))
 
@@ -63,6 +66,8 @@ def menu_handler(user_input, user):
     if user_input == 6:
         return verify_canadian_funding(user)
     if user_input == 7:
+        show_dow_chart()
+    if user_input == 8:
         quit()
     else:
         raise TypeError
@@ -70,6 +75,10 @@ def menu_handler(user_input, user):
 
 def search_stocks():
     market_data.ask_for_stock()
+
+
+def show_dow_chart():
+    dow_plot.main()
 
 
 def verify_canadian_funding(user):
