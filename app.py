@@ -73,6 +73,13 @@ def search_stocks():
 
 
 def verify_canadian_funding(user):
+    """
+    Verify if user is eligible for Canadian Emergency Response Benefit funding.
+
+    :param user: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Successfully verify if user is eligible for Canadian Emergency Response Benefit funding
+    """
     funding.verify_for_funding(user)
 
 
