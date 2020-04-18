@@ -16,4 +16,7 @@ In terminal:
 1. git clone https://github.com/arjundha/COMP1510-Hackathon.git
 2. navigate to your python/Scripts folder
 2. pip install ip2geotools
-
+3. pip install yfinance --upgrade --no-cache-dir
+4. pip install pandas
+5. pip install pandas_datareader
+6. pip install matplotlib
