@@ -62,10 +62,13 @@ def display_info(stock_ticker):
     wrapper = textwrap.TextWrapper(width=100)
     word_list = wrapper.wrap(text=summary)
 
+    # Check if markets are closed
     try:
         dividend_yield = float(stock_ticker['dividendYield']) * 100
     except TypeError:
         dividend_yield = "-"
+    else:
+        dividend_yield = str(dividend_yield) + "%"
 
     # Print information regarding stock_ticker
     print(f"""
@@ -80,9 +83,10 @@ Daily Low:          {stock_ticker['dayLow']}
 
 Open:               {stock_ticker['open']}
 
-Dividend Yield:     {dividend_yield}%
+Dividend Yield:     {dividend_yield}
 
-
+NOTE: IF MARKETS ARE CLOSED DIVIDEND YIELD MAY NOT DISPLAY
+___________________________________________________________
 Business Summary:
     """)
     # Print summary corresponding to the textwrap
