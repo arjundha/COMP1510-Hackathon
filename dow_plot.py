@@ -2,6 +2,7 @@ import matplotlib.pyplot as plot
 import warnings
 from matplotlib import style
 import datetime
+
 warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas_datareader.data as web
 import pandas as pd
