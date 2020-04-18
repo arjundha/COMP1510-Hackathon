@@ -145,6 +145,11 @@ class User:
         :param new_country: Country to replace current country with in a User object
         :precondition: parameter is an string
         :postcondition: will change the country in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_country("China")
+        >>> test_user.get_country()
+        'China'
         """
         self.__country = new_country
 
@@ -155,6 +160,11 @@ class User:
         :param new_student: Boolean to replace current boolean with in a User object
         :precondition: parameter is a boolean (true or false)
         :postcondition: will change the student status in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_student(False)
+        >>> test_user.get_student()
+        False
         """
         self.__student = new_student
 
@@ -163,6 +173,14 @@ class User:
         Return a string representing a User object.
 
         :return: A message of a User's information as a string
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> print(test_user)
+        Name: "Arjun Dhaliwal"
+        Age: 24
+        Income: $0
+        Country: Canada
+        Current Student: True
         """
         return "Name: \"%s\"\nAge: %d\nIncome: $%d\nCountry: %s\nCurrent Student: %s" % \
                (self.get_name(), self.get_age(), self.get_income(), self.get_country(), self.get_student())
