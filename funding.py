@@ -17,11 +17,8 @@ def verify_for_funding(user_object: object):
     :postcondition: Correctly verify if user_object is verified for government funding
     """
     # This dictionary is used to store Boolean values received from object attribute value verification functions
-    veri = {"Country": verify_country(user_object), "Age": verify_age(user_object),
+    verification = {"Country": verify_country(user_object), "Age": verify_age(user_object),
                     "Income": verify_income(user_object)}
-
-    # Dictionary comprehension for fun
-    verification = {x for x in veri}   # DEMONSTRATING DICTIONARY COMPREHENSION
 
     # If every value in the verification dictionary is true, it will do the following:
     if all(value for value in verification.values()):
