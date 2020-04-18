@@ -38,7 +38,7 @@ The pandas package
 The matplotlib package
 
 Finally, these APIs were used in the development of this application:
-1. news.api
+1. news.api (https://newsapi.org/)
 2. ipifi API (https://api.ipify.org/)
 
 # Getting Started
