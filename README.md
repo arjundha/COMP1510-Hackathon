@@ -21,6 +21,10 @@ In terminal or command line, follow the following steps:
     4. pip install pandas_datareader
     5. pip install matplotlib
     
+    OR
+    
+    Install the requirements.txt by 
+    
     
 # Links
 To view our requirements checklist, follow this link: <br>
