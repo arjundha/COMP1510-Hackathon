@@ -24,7 +24,6 @@ def print_messages(original_func):
     def wrapper_printer(*args, **kwargs):
         print("\nLoading...")
         original_func(*args, **kwargs)
-        print("Load successful!")
 
     return wrapper_printer
 
@@ -249,7 +248,6 @@ def view_article_in_browser(url):
     # User's default browser will be launched
     webbrowser.open_new(url)
     input("Hit the enter key to continue")
-    return display_news_articles_menu()
 
 
 def main():

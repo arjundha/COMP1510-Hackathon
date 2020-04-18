@@ -16,18 +16,19 @@ def ask_for_stock() -> object:
 
     :return: user_input as a string and as a parameter of check_with_user
     """
-    try:
-        user_input = input("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n").strip()
+    while True:
+        try:
+            user_input = input("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n").strip()
 
-        # Check if the string is empty, if it is raise an error and catch it after
-        if user_input == "":
-            raise ValueError
+            # Check if the string is empty, if it is raise an error and catch it after
+            if user_input == "":
+                raise ValueError
 
-    except ValueError:
-        print("A stock name cannot be blank. Please try again.")
+        except ValueError:
+            print("A stock name cannot be blank. Please try again.")
 
-    else:
-        return check_with_user(user_input)
+        else:
+            return check_with_user(user_input)
 
 
 def check_with_user(stock: str) -> object:
