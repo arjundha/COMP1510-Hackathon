@@ -55,6 +55,7 @@ def menu_handler(user_input: int, user: object or str) -> object:
 
     :return: a function that corresponds with user_input
     """
+    # Return the corresponding function
     if user_input == 1:
         return global_statistics()
 
@@ -121,6 +122,7 @@ def my_country(user: object or str):
     :precondition: user must be an object created in user_generation
     :postcondition: will display all information regarding the user's inputted location
     """
+    # Display country
     print(user.get_country())
 
     # Get Country stats by passing it to get_country_stats
