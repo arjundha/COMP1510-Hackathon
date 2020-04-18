@@ -214,7 +214,7 @@ def view_article_in_browser(url):
     :postcondition: Successfully open the article URL in user's default web browser
     """
     webbrowser.open_new(url)  # User's default browser will be launched
-    input("Hit any button to continue")
+    input("Hit the enter key to continue")
 
 
 def main():
