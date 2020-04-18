@@ -18,7 +18,8 @@ def ask_for_stock() -> object:
     """
     while True:
         try:
-            user_input = input("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n").strip()
+            user_input = input("""Please input the stock abbreviated name.
+Example: Microsoft Corp. -> MSFT\n""").replace(" ", "")
 
             # Check if the string is empty, if it is raise an error and catch it after
             if user_input == "":
