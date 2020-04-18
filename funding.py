@@ -20,7 +20,8 @@ def verify_for_funding(user_object):
                     "Income": verify_income(user_object)}
 
     if all(value for value in verification.values()):
-        print("You are verified! Please follow the instructions in the link that will open in your browser.")
+        print("You are verified for funding! "
+              "Please follow the instructions in the link that will open in your browser.")
         time.sleep(2)
         open_link("https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html")
 
