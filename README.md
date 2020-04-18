@@ -33,9 +33,11 @@ prefer, they can receive the international scale stats.
 The yfinance package is used to provide the user with up to date knowledge on the stock
 market. This information can be used to see the impact this pandemic is having on the economy.
 
-The pandas package
+The pandas package is used to read the created dow.csv file.
 
-The matplotlib package
+The pandas_datareader package is used to create the data_frame from the csv.file.
+
+The matplotlib package is used to plot the data in the data_frame.
 
 Finally, these APIs were used in the development of this application:
 1. news.api (https://newsapi.org/)
@@ -47,11 +49,11 @@ In terminal or command line, follow the following steps:
 1. Type "git clone https://github.com/arjundha/COMP1510-Hackathon.git"
 2. Navigate to your python/Scripts folder
 3. Type the following commands to install pip packages:
-    1. pip install ip2geotools
-    2. pip install yfinance --upgrade --no-cache-dir
-    3. pip install pandas
-    4. pip install pandas_datareader
-    5. pip install matplotlib
+    1. pip3 install ip2geotools
+    2. pip3 install yfinance --upgrade --no-cache-dir
+    3. pip3 install pandas
+    4. pip3 install pandas_datareader
+    5. pip3 install matplotlib
     
     OR
     
