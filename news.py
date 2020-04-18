@@ -1,7 +1,7 @@
 # API KEY: e454fda9cf5b4a5d8e6f8bc3d960c7b5
 import doctest
 import json
-import textwrap
+import app
 import webbrowser
 import requests
 import default_country
@@ -17,6 +17,7 @@ def print_messages(original_func):  # DEMONSTRATES DECORATORS
 
     :return: wrapper_printer
     """
+
     def wrapper_printer(*args, **kwargs):
         print("\nLoading...")
         original_func(*args, **kwargs)
@@ -59,13 +60,16 @@ def display_news_articles_menu():
             user_input = int(input(
                 "1. Top news about your current location\n"
                 "2. Global news about COVID-19\n"
-                "3. Search news articles by keyword\n"))
+                "3. Search news articles by keyword\n"
+                "4. Back to Menu\n"))
         except ValueError:
             print("Invalid input! Try again.")
             continue
         else:
             if 1 <= user_input <= 3:
                 menu_handler(user_input)  # Will direct user to their selected menu option
+            elif user_input == 4:
+                return app.option_menu()
             else:
                 print("Invalid input! Try again.")
 
@@ -224,6 +228,7 @@ def view_article_in_browser(url):
     """
     webbrowser.open_new(url)  # User's default browser will be launched
     input("Hit the enter key to continue")
+    return display_news_articles_menu()
 
 
 def main():
