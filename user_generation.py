@@ -5,7 +5,6 @@ import doctest
 import user
 import re
 import covid19_stats
-import funding
 import itertools
 
 
