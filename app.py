@@ -78,6 +78,10 @@ def search_stocks():
 
 
 def show_dow_chart():
+    """Display a plot of the daily closes of the DOW Jones Index from 2020-1-1 to 2020-4-17.
+
+    :postcondition: successfully displays a plot of the daily closes of the DOW Jones Index from 2020-1-1 to 2020-4-17
+    """
     dow_plot.main()
 
 
