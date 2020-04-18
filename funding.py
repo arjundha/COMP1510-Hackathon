@@ -77,6 +77,14 @@ def verify_income(user_object):
     :postcondition: Correctly verify if user_object's income is 5000 or more
 
     :return: A boolean if income is more than 5000, otherwise invoke verify_if_student function
+
+    >>> user_object = user.User("Jessica Hong", 15, 35000, "Canada", True)
+    >>> verify_income(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 0, 0, "Canada", False)
+    >>> verify_income(user_object)
+    Sorry, you are not qualified for government funding!
     """
     if user_object.get_income() >= 5000:
         return True
