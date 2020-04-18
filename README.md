@@ -33,9 +33,9 @@ prefer, they can receive the international scale stats.
 The yfinance package is used to provide the user with up to date knowledge on the stock
 market. This information can be used to see the impact this pandemic is having on the economy.
 
-The pandas package is used to read the created dow.csv file.
+The pandas_datareader package is used to create the csv and the data_frame from the created csv.file.
 
-The pandas_datareader package is used to create the data_frame from the csv.file.
+The pandas package is used to read the created dow.csv file.
 
 The matplotlib package is used to plot the data in the data_frame.
 
