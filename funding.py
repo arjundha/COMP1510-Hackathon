@@ -35,6 +35,14 @@ def verify_country(user_object):
     :postcondition: Correctly verify if user_object's country is Canada
 
     :return: A boolean if user_object's country is Canada
+
+    >>> user_object = user.User("Jessica Hong", 23, 35000, "Canada", True)
+    >>> verify_country(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 23, 0, "United States", False)
+    >>> verify_country(user_object)
+    False
     """
     return True if user_object.get_country() == "Canada" else False
 
