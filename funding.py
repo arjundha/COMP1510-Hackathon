@@ -68,18 +68,35 @@ def verify_income(user_object):
 
 
 def verify_province():
-    user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
+    """
+    Verify if user's province is British Columbia.
 
-    if user_province == "BRITISH COLUMBIA" or user_province == "BC":
-        print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
-              "A link has been opened in your browser for your educational viewing.")
-        time.sleep(2)
-        open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+    :precondition: User's input must be a string
+    :postcondition: Correctly verify if user's province is British Columbia
+    """
+    try:
+        user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
+    except ValueError:
+        print("Invalid input, try again!")
     else:
-        print("Sorry, you are not qualified for government funding in British Columbia!")
+        if user_province == "BRITISH COLUMBIA" or user_province == "BC":
+            print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
+                  "A link has been opened in your browser for your educational viewing.")
+            time.sleep(2)
+            open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+        else:
+            print("Sorry, you are not qualified for government funding in British Columbia!")
 
 
 def verify_if_student(user_object):
+    """
+    Verify if user is a student.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Will successfully invoke verify_province function if user is a student, otherwise print a
+    rejection message
+    """
     if user_object.get_student():
         verify_province()
     else:
@@ -87,12 +104,21 @@ def verify_if_student(user_object):
 
 
 def open_link(url):
+    """
+    Open the article URL in user's default web browser.
+
+    :param url: A string
+    :precondition: url must be a well-formed string
+    :postcondition: Successfully open the article URL in user's default web browser
+    """
     webbrowser.open_new(url)
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
-    verify_for_funding(user.User("Jessica Hong", 23, 1000, "Canada", True))
 
 
 if __name__ == '__main__':
