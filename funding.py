@@ -130,7 +130,7 @@ def verify_province():
     """
     try:
         # Ask user for their Province or Territory
-        user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
+        user_province = province_selector()
 
         # If the user enters an empty string, raise a ValueError
         if user_province == "":
@@ -144,7 +144,7 @@ def verify_province():
         # If the user entered British Columbia in some capacity, open a link to the emergency funding on gov.bc.ca
         if user_province == "BRITISH COLUMBIA" or user_province == "BC":
 
-            print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
+            print("Because you are a post-secondary student, BC's government is offering you emergency support. "
                   "A link has been opened in your browser for your educational viewing.")
 
             time.sleep(2)  # Wait two seconds before opening the link to provide time for user to digest the message
@@ -152,6 +152,29 @@ def verify_province():
 
         else:
             return
+
+
+def province_selector():
+    """
+    Select a province or territory.
+
+    :precondition:
+    :postcondition:
+    :return:
+    """
+    provinces_and_territories = ("Alberta", "British Columbia", "Saskatchewan", "Manitoba", "Ontario", "Quebec",
+                                 "New Brunswick", "Nova Scotia", "Prince Edward Island", "Newfoundland", "Nunavut",
+                                 "Northwest Territories", "Yukon")
+
+    print("Which province or territory do you live in?")
+
+    for i in range(len(provinces_and_territories)):
+        print(provinces_and_territories[i])
+
+    user_province = input("Enter your response either in the fullname or acronym "
+                          "(ex. British Columbia or BC): ").upper().strip()
+
+    return user_province
 
 
 def open_link(url):
@@ -170,6 +193,7 @@ def main():
     Test the functions in the module.
     """
     doctest.testmod()
+    province_selector()
 
 
 if __name__ == '__main__':
