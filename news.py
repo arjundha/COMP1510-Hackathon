@@ -1,4 +1,5 @@
 # API KEY: e454fda9cf5b4a5d8e6f8bc3d960c7b5
+import doctest
 import json
 import textwrap
 import webbrowser
@@ -195,3 +196,14 @@ def view_article_in_browser(url):
     """
     webbrowser.open_new(url)
     input("Hit any button to continue")
+
+
+def main():
+    """
+    Test the functions in this module.
+    """
+    doctest.testmod()
+
+
+if __name__ == "__main__":
+    main()
