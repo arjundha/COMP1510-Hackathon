@@ -115,6 +115,9 @@ def open_link(url):
 
 
 def main():
+    """
+    Test the functions in the module.
+    """
     doctest.testmod()
 
 
