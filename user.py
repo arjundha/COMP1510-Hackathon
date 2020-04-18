@@ -50,6 +50,7 @@ class User:
         Return the age in a User object.
 
         :return: User age as an int
+
         >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
         >>> test_user.get_age()
         24
@@ -61,6 +62,10 @@ class User:
         Return the annual income in a User object.
 
         :return: User income as an int
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_income()
+        0
         """
         return self.__income
 
