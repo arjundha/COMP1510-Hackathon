@@ -82,6 +82,7 @@ def menu_handler(user_input: int):
     :precondition: user_input must be an integer between 1 and 3
     :postcondition: Successfully invoke user's selected menu option function
     """
+    # Match user_input to corresponding condition
     if user_input == 1:
         get_default_country_top_headlines()
 
