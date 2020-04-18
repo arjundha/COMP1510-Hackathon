@@ -12,6 +12,9 @@ def get(api_link: str) -> dict:
     :preconditon: api_link must be a string
     :postcondition: return the response as a json dictionary
     :return: the response as a json dictionary
+
+    >>> get('https://api.covid19api.com/summary')['Countries'][44]["Country"]
+    'Chile'
     """
     # Get response from the api
     response = requests.get(api_link)
