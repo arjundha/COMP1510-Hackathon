@@ -54,6 +54,14 @@ def validate_name(name: str) -> bool:
     :postcondition: Will attempt to match the name against the ReGex
 
     :return: A boolean True if it is a matched name, False if it is not
+
+    >>> name = "Jessica Hong"
+    >>> validate_name(name)
+    True
+
+    >>> name = "m nakamoto"
+    >>> validate_name(name)
+    False
     """
     # REGEX EXAMPLE IS HERE
     name_regex = re.compile(r'^[A-Z][a-zA-Z\-]* [A-Z][a-zA-Z\-]*$')  # ReGex for checking name formation
@@ -280,6 +288,14 @@ def numbered_list(user_list: list):
     :param user_list: A list containing elements that will be printed in as a numbered list
     :precondition: Parameter is a list
     :postcondition: Will print the list as a numbered list
+
+    >>> user_list = ["Name", "Age", "Income", "Country", "Student Status"]
+    >>> numbered_list(user_list)
+    1: Name
+    2: Age
+    3: Income
+    4: Country
+    5: Student Status
     """
     for i, thing in enumerate(user_list):  # For each thing in the list, print the list with an increasing number
         print("%d: %s" % (i + 1, thing))
