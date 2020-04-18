@@ -17,7 +17,7 @@ def option_menu() -> int:
     :return: input as an int
     """
     while True:
-        print("Please select an option, or quit.")
+        print("Please select an option from the following menu.")
         try:
             return int(input("""
         1. Global Statistics
