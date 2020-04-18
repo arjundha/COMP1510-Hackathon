@@ -32,6 +32,8 @@ def verify_for_funding(user_object):
     else:
         print("Unfortunately, you do not appear to qualify for the CERB funding. You must be of at least 15 years of"
               " age, have made at least $5000 in the past year, and be a Canadian resident.\n")
+
+        # The below input stalls the screen so users can read before the main menu appears again
         input("Hit any button to continue")
 
 
@@ -158,19 +160,24 @@ def province_selector():
     """
     Select a province or territory.
 
-    :precondition:
-    :postcondition:
-    :return:
+    :precondition: User enters in the correct province or territory
+    :postcondition: Will return the user selection
+
+    :return: User province/territory as a string in uppercase
     """
+    #  A tuple containing all of the Canadian provinces and territories
     provinces_and_territories = ("Alberta", "British Columbia", "Saskatchewan", "Manitoba", "Ontario", "Quebec",
                                  "New Brunswick", "Nova Scotia", "Prince Edward Island", "Newfoundland", "Nunavut",
                                  "Northwest Territories", "Yukon")
 
+    # Prepare the user for input request
     print("Which province or territory do you live in?")
 
+    # Use a for loop to iterate through the range of the tuple and print each index in the tuple for viewing pleasure
     for i in range(len(provinces_and_territories)):
         print(provinces_and_territories[i])
 
+    # Ask which province/territory user lives in
     user_province = input("Enter your response either in the fullname or acronym "
                           "(ex. British Columbia or BC): ").upper().strip()
 
@@ -193,7 +200,6 @@ def main():
     Test the functions in the module.
     """
     doctest.testmod()
-    province_selector()
 
 
 if __name__ == '__main__':
