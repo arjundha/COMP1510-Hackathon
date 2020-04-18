@@ -62,6 +62,11 @@ def display_info(stock_ticker):
     wrapper = textwrap.TextWrapper(width=100)
     word_list = wrapper.wrap(text=summary)
 
+    try:
+        dividend_yield = float(stock_ticker['dividendYield']) * 100
+    except TypeError:
+        dividend_yield = "-"
+
     # Print information regarding stock_ticker
     print(f"""
 {stock_ticker['shortName']}    {stock_ticker['currency']}           
@@ -75,7 +80,7 @@ Daily Low:          {stock_ticker['dayLow']}
 
 Open:               {stock_ticker['open']}
 
-Dividend Yield:     {float(stock_ticker['dividendYield']) * 100}%
+Dividend Yield:     {dividend_yield}%
 
 
 Business Summary:
