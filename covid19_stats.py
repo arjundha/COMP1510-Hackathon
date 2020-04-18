@@ -4,7 +4,7 @@ import json
 import doctest
 
 
-def get(api_link):
+def get(api_link: str) -> dict:
     """
     Get response from api
 
@@ -38,7 +38,7 @@ def global_stats():
     return get('https://api.covid19api.com/summary')
 
 
-def get_country_stats(country):
+def get_country_stats(country: str) -> str:
     """
     Search api dictionary for country
 

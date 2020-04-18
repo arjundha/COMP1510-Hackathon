@@ -70,7 +70,7 @@ def display_news_articles_menu():
                 print("Invalid input! Try again.")
 
 
-def menu_handler(user_input):
+def menu_handler(user_input: int):
     """
     Direct user to their selected menu option.
 
