@@ -26,6 +26,12 @@ def get(api_link):
 
 
 def global_stats():
+    """
+    Get dictionary from global statistics api
+
+    :postcondition: get the response from the api for global statistics
+    :return: the response as a json dictionary
+    """
     return get('https://api.covid19api.com/summary')
 
 
