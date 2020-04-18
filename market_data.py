@@ -34,8 +34,10 @@ def check_with_user(stock: str) -> object:
             # Except error and inform user
             print("We can't find the stock entered..")
             print("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
+
         else:
             # Clarify with user
+
             try:
                 print("Is this the desired Company?")
                 print(ticker.info['longName'])
@@ -69,6 +71,7 @@ def display_info(stock_ticker: dict) -> object:
     """
     # Initialize the summary for text wrap
     summary = stock_ticker['longBusinessSummary']
+
     # Create the wrapper and word list to display later
     wrapper = textwrap.TextWrapper(width=100)
     word_list = wrapper.wrap(text=summary)
@@ -76,8 +79,10 @@ def display_info(stock_ticker: dict) -> object:
     # Check if dividendYield has a value
     try:
         dividend_yield = float(stock_ticker['dividendYield']) * 100
+
     except TypeError:
         dividend_yield = "-"
+
     else:
         dividend_yield = str(dividend_yield) + "%"
 
@@ -103,7 +108,9 @@ Business Summary:
     # Print summary corresponding to the textwrap
     for line in word_list:
         print(line)
+
     print("\n")
+
     # Wait for user
     input("Hit enter to continue\n")
 
@@ -114,11 +121,14 @@ Business Summary:
         if user_input == '1':
             # Ask user for new stock
             return ask_for_stock()
+
         elif user_input == '2':
             # Return to option menu
             return app.option_menu()
+
         elif user_input == '3':
             quit()
+
         else:
             # Inform user
             print("Sorry please choose 1 of the 3 options.\n")

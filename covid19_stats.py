@@ -19,8 +19,10 @@ def get(api_link):
     # Check status of response
     try:
         response.raise_for_status()
+
     except requests.exceptions.HTTPError as e:
         print(e)
+
     else:
         # Return json dictionary
         return json.loads(response.text)
