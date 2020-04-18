@@ -36,12 +36,12 @@ def check_with_user(stock: str) -> object:
             print("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
 
         else:
-            # Clarify with user
-
             try:
+                # Clarify with user
                 print("Is this the desired Company?")
                 print(ticker.info['longName'])
             except IndexError or KeyError:
+                # Sometimes api data can be broken for certain stocks
                 print("There seems to be an issue fetching the information for the stock entered")
                 print(
                     "Please try a different stock, input the stock abbreviated name.\n")
@@ -81,6 +81,7 @@ def display_info(stock_ticker: dict) -> object:
         dividend_yield = float(stock_ticker['dividendYield']) * 100
 
     except TypeError:
+        # When some markets are closed they dont have a dividend yield
         dividend_yield = "-"
 
     else:
