@@ -1,5 +1,6 @@
 import yfinance as yf
 import textwrap
+import app
 
 
 def ask_for_stock():
@@ -102,7 +103,7 @@ Business Summary:
         if user_input == '1':
             return ask_for_stock()
         elif user_input == '2':
-            return
+            return app.option_menu()
         elif user_input == '3':
             quit()
         else:
