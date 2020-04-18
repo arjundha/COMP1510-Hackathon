@@ -69,11 +69,9 @@ def display_news_articles_menu():
             print("Invalid input! Try again.")
             continue
         else:
-            if 1 <= user_input <= 3:
+            if 1 <= user_input <= 4:
                 # Will direct user to their selected menu option
                 menu_handler(user_input)
-            elif user_input == 4:
-                return app.option_menu()
             else:
                 print("Invalid input! Try again.")
 
@@ -95,6 +93,9 @@ def menu_handler(user_input: int):
 
     elif user_input == 3:
         get_articles_by_keyword()
+
+    elif user_input == 4:
+        return app.option_menu()
 
 
 def get_default_country_top_headlines():
