@@ -58,7 +58,7 @@ In terminal or command line, follow the following steps:
     OR
     
     Install the requirements.txt by typing the following:
-    1. pip install -r requirements.txt
+    1. pip3 install -r requirements.txt
 
     
     
