@@ -127,11 +127,14 @@ def get_user_keyword() -> str:
     :return: keyword as a string
     """
     try:
-        keyword = input("What articles would you like to search? ")
+        keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
+
+        # if keyword == "":
+        #     raise ValueError
     except ValueError:
         print("Invalid input, try again!")
     else:
-        keyword = keyword.replace(' ', '+')
+        keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
         return keyword
 
 
