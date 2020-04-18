@@ -102,7 +102,9 @@ Business Summary:
     # Print summary corresponding to the textwrap
     for line in word_list:
         print(line)
+
     print("\n")
+
     # Wait for user
     input("Hit enter to continue\n")
 
