@@ -48,6 +48,9 @@ def print_default_country(default_country: str):
 
 
 def main():
+    """
+    Run the functions in this file.
+    """
     ip_address = get_ip()
     print_ip(ip_address)
     default_country = get_default_country(ip_address)

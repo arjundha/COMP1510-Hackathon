@@ -5,10 +5,10 @@ import app
 
 def ask_for_stock() -> object:
     """
-    Ask user for stock name.
+    Ask user for a stock name.
 
     :precondition: user_input must be a valid abbreviated stock name
-    :postcodition: will return user_input as a parameter of check_with_user to check if user_input meets conditions
+    :postcondition: will return user_input as a parameter of check_with_user to check if user_input meets conditions
 
     :return: user_input as a string and as a parameter of check_with_user
     """
@@ -18,7 +18,7 @@ def ask_for_stock() -> object:
 
 def check_with_user(stock: str) -> object:
     """
-    Check if stock is valid.
+    Check if a stock name is valid.
 
     :param stock: abbreviated stock name
     :precondition: stock must be a string
@@ -30,6 +30,7 @@ def check_with_user(stock: str) -> object:
         try:
             # Declare ticker
             ticker = yf.Ticker(stock)
+
         except ImportError or KeyError:
             # Except error and inform user
             print("We can't find the stock entered..")
@@ -40,21 +41,24 @@ def check_with_user(stock: str) -> object:
                 # Clarify with user
                 print("Is this the desired Company?")
                 print(ticker.info['longName'])
+
             except IndexError or KeyError:
                 # Sometimes api data can be broken for certain stocks
                 print("There seems to be an issue fetching the information for the stock entered")
-                print(
-                    "Please try a different stock, input the stock abbreviated name.\n")
+                print("Please try a different stock, input the stock abbreviated name.\n")
                 ask_for_stock()
+
             else:
                 user_input = input("1. Yes\n2. No\n")
 
                 if user_input == '1':
                     # Display info
                     return display_info(ticker.info)
+
                 elif user_input == '2':
                     # Repeat if user is not satisfied
-                    "Make sure you enter the abbreviated stock name correctly"
+                    # Make sure you enter the abbreviated stock name correctly
+
                     return ask_for_stock()
 
 

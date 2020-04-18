@@ -180,7 +180,7 @@ def global_statistics():
     display_statistics(statistics)
 
 
-def display_statistics(statistics: dict):
+def display_statistics(statistics: dict or str):
     """
     Display statistics from given dictionary.
 
@@ -213,6 +213,7 @@ def main():
     Run program.
     """
     doctest.testmod()
+
     # Welcome message
     print("Welcome to the COVID-19 App! Before we get started, lets generate your user profile.")
 
