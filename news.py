@@ -59,7 +59,8 @@ def display_news_articles_menu():
     :precondition: User input must be an integer between 1 and 3
     :postcondition: Successfully handle user's input using menu_handler function
     """
-    while True:
+    sentinel = False
+    while not sentinel:
 
         try:
             # Get user input after displaying menu
@@ -74,9 +75,13 @@ def display_news_articles_menu():
             continue
 
         else:
-            if 1 <= user_input <= 4:
+            if 1 <= user_input <= 3:
                 # Will direct user to their selected menu option
                 menu_handler(user_input)
+
+            elif user_input == 4:
+                sentinel = True
+
             else:
                 print("Invalid input! Try again.")
 
@@ -98,9 +103,6 @@ def menu_handler(user_input: int):
 
     elif user_input == 3:
         get_articles_by_keyword()
-
-    elif user_input == 4:
-        return app.option_menu()
 
 
 def get_default_country_top_headlines():
