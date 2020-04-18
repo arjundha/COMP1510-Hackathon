@@ -43,9 +43,11 @@ def verify_news_api_response(url: str) -> dict:
 
     try:
         response.raise_for_status()
+
     # Bad Request. The request was unacceptable, often due to a missing or misconfigured parameter
     except requests.exceptions.HTTPError as e:
         print(e)
+
     else:
         return json.loads(response.text)
 
@@ -58,6 +60,7 @@ def display_news_articles_menu():
     :postcondition: Successfully handle user's input using menu_handler function
     """
     while True:
+
         try:
             # Get user input after displaying menu
             user_input = int(input(
@@ -65,9 +68,11 @@ def display_news_articles_menu():
                 "2. Global news about COVID-19\n"
                 "3. Search news articles by keyword\n"
                 "4. Back to Menu\n"))
+
         except ValueError:
             print("Invalid input! Try again.")
             continue
+
         else:
             if 1 <= user_input <= 4:
                 # Will direct user to their selected menu option
