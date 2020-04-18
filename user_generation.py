@@ -6,6 +6,7 @@ import user
 import re
 import covid19_stats
 import funding
+import itertools
 
 
 def create_user() -> object:
@@ -232,7 +233,7 @@ def edit_user(new_user: object):
         user_input = input("\nWhat would you like to change? (b to go back): ").strip()
 
         # If the input is 1, 2, 3, 4, or 5, it'll be matched with the elements in the set and the user will edit the obj
-        if user_input in {"1", "2", "3", "4", "5"}:  # DEMONSTRATING A SET
+        if user_input in set(itertools.compress("123456", [1, 1, 1, 1, 1, 0])):  # DEMONSTRATING A SET AND ITERTOOLS
             edit_user_info(user_input, new_user)
 
             # Display updated User object
