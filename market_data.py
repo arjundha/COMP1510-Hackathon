@@ -9,6 +9,7 @@ def ask_for_stock():
 
     :precondition: user_input must be a valid abbreviated stock name
     :postcodition: will return user_input as a parameter of check_with_user to check if user_input meets conditions
+
     :return: user_input as a string and as a parameter of check_with_user
     """
     user_input = input("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
@@ -22,6 +23,7 @@ def check_with_user(stock):
     :param stock: abbreviated stock name
     :precondition: stock must be a string
     :precondition: user_input must be a number that corresponds with the options given
+
     :return: a function that corresponds with user_input
     """
     while True:
@@ -55,6 +57,7 @@ def display_info(stock_ticker):
     :precondition: stock_ticker must be a well formatted yFinance dictionary
     :precondition: user_input must be a number that corresponds with the options given
     :postcondition: will neatly print all information regarding the stock and return nothing or ask_user()
+
     :return: None or ask_user depending on user_input
     """
     # Initialize the summary for text wrap

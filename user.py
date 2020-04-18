@@ -50,6 +50,10 @@ class User:
         Return the age in a User object.
 
         :return: User age as an int
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_age()
+        24
         """
         return self.__age
 
@@ -58,6 +62,10 @@ class User:
         Return the annual income in a User object.
 
         :return: User income as an int
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_income()
+        0
         """
         return self.__income
 
@@ -66,6 +74,10 @@ class User:
         Return the country of residence in a User object.
 
         :return: User country as a string
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_country()
+        'Canada'
         """
         return self.__country
 
@@ -74,6 +86,10 @@ class User:
         Return the student enrollment status in a User object.
 
         :return: User student status as a Boolean
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_student()
+        True
         """
         return self.__student
 
@@ -84,6 +100,11 @@ class User:
         :param new_name: Name to replace current name value in a object
         :precondition: parameter is a well-formed string
         :postcondition: will change the name in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_name("Chris")
+        >>> test_user.get_name()
+        'Chris'
         """
         self.__name = new_name
 
@@ -94,6 +115,11 @@ class User:
         :param new_age: Age to replace current age with in a User object
         :precondition: parameter is an integer
         :postcondition: will change the age in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_age(999)
+        >>> test_user.get_age()
+        999
         """
         self.__age = new_age
 
@@ -104,6 +130,11 @@ class User:
         :param new_income: Income to replace current income with in a User object
         :precondition: parameter is an integer
         :postcondition: will change the income in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_income(999)
+        >>> test_user.get_income()
+        999
         """
         self.__income = new_income
 
@@ -114,6 +145,11 @@ class User:
         :param new_country: Country to replace current country with in a User object
         :precondition: parameter is an string
         :postcondition: will change the country in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_country("China")
+        >>> test_user.get_country()
+        'China'
         """
         self.__country = new_country
 
@@ -124,6 +160,11 @@ class User:
         :param new_student: Boolean to replace current boolean with in a User object
         :precondition: parameter is a boolean (true or false)
         :postcondition: will change the student status in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_student(False)
+        >>> test_user.get_student()
+        False
         """
         self.__student = new_student
 
@@ -132,6 +173,14 @@ class User:
         Return a string representing a User object.
 
         :return: A message of a User's information as a string
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> print(test_user)
+        Name: "Arjun Dhaliwal"
+        Age: 24
+        Income: $0
+        Country: Canada
+        Current Student: True
         """
         return "Name: \"%s\"\nAge: %d\nIncome: $%d\nCountry: %s\nCurrent Student: %s" % \
                (self.get_name(), self.get_age(), self.get_income(), self.get_country(), self.get_student())
@@ -141,6 +190,10 @@ class User:
         Return a string representing a User object.
 
         :return: Object as a string.
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user
+        User("Arjun Dhaliwal", 24, $0, Canada, True)
         """
         return "User(\"%s\", %d, $%d, %s, %s)" % (self.get_name(), self.get_age(), self.get_income(),
                                                   self.get_country(), self.get_student())
@@ -151,15 +204,6 @@ def main():
     Test the functions in the module.
     """
     doctest.testmod()
-    test_user = User("Arjun", 24, 0, "Canada", True)
-    print(test_user)
-    test_user.set_name("Arjunnnnnn")
-    test_user.set_age(475345834758934795)
-    test_user.set_income(32545345)
-    test_user.set_country("france")
-    test_user.set_student(False)
-    print(test_user)
-    print(test_user.get_student())
 
 
 if __name__ == '__main__':
