@@ -10,13 +10,13 @@ Team 1 for the COMP 1510 Hackathon Final Exam.
 | Jessica Hong | A01085702 | jeessicahong |
 | Duncan Keen | A01185666 | dkeen10 |
 
-# Getting Started
-
-The following steps must be executed before the application is run: <br><br> 
-In your terminal or command line:
-1. Type "git clone https://github.com/arjundha/COMP1510-Hackathon.git"
-2. Navigate to your python/Scripts folder
-3. Type "pip install ip2geotools"
-
-
-
+Getting Started
+===============
+In terminal:
+1. git clone https://github.com/arjundha/COMP1510-Hackathon.git
+2. navigate to your python/Scripts folder
+2. pip install ip2geotools
+3. pip install yfinance --upgrade --no-cache-dir
+4. pip install pandas
+5. pip install pandas_datareader
+6. pip install matplotlib

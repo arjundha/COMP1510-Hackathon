@@ -3,6 +3,7 @@ import market_data
 import covid19_stats
 import news
 import user_generation
+import funding
 
 
 def option_menu():
@@ -27,7 +28,9 @@ def option_menu():
         
         5. Search Stocks
 
-        6. Quit
+        6. Am I Eligible for the Canadian Emergency Response Benefit Funding?
+        
+        7. Quit
 
 \n"""))
 
@@ -58,6 +61,8 @@ def menu_handler(user_input, user):
     if user_input == 5:
         search_stocks()
     if user_input == 6:
+        return verify_canadian_funding(user)
+    if user_input == 7:
         quit()
     else:
         raise TypeError
@@ -65,6 +70,17 @@ def menu_handler(user_input, user):
 
 def search_stocks():
     market_data.ask_for_stock()
+
+
+def verify_canadian_funding(user):
+    """
+    Verify if user is eligible for Canadian Emergency Response Benefit funding.
+
+    :param user: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Successfully verify if user is eligible for Canadian Emergency Response Benefit funding
+    """
+    funding.verify_for_funding(user)
 
 
 def my_country(user):
