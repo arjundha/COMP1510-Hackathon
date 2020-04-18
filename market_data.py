@@ -3,7 +3,7 @@ import textwrap
 import app
 
 
-def ask_for_stock():
+def ask_for_stock() -> object:
     """
     Ask user for stock name.
 
@@ -16,7 +16,7 @@ def ask_for_stock():
     return check_with_user(user_input)
 
 
-def check_with_user(stock):
+def check_with_user(stock: str) -> object:
     """
     Check if stock is valid.
 
@@ -49,7 +49,7 @@ def check_with_user(stock):
                 return ask_for_stock()
 
 
-def display_info(stock_ticker):
+def display_info(stock_ticker: dict) -> object:
     """
     Display stock information.
 
