@@ -3,6 +3,7 @@ import warnings
 from matplotlib import style
 import datetime
 
+# Filtering out the futureWarning that pandas_datareader and pandas cause.  This does cause a PEP8 issue, however.
 warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas_datareader.data as web
 import pandas as pd
