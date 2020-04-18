@@ -1,3 +1,6 @@
+"""
+Main application file
+"""
 import market_data
 import covid19_stats
 import news
