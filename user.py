@@ -74,6 +74,10 @@ class User:
         Return the country of residence in a User object.
 
         :return: User country as a string
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_country()
+        'Canada'
         """
         return self.__country
 
@@ -82,6 +86,10 @@ class User:
         Return the student enrollment status in a User object.
 
         :return: User student status as a Boolean
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_student()
+        True
         """
         return self.__student
 
@@ -92,6 +100,11 @@ class User:
         :param new_name: Name to replace current name value in a object
         :precondition: parameter is a well-formed string
         :postcondition: will change the name in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_name("Chris")
+        >>> test_user.get_name()
+        'Chris'
         """
         self.__name = new_name
 
@@ -102,6 +115,11 @@ class User:
         :param new_age: Age to replace current age with in a User object
         :precondition: parameter is an integer
         :postcondition: will change the age in an object
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_age(999)
+        >>> test_user.get_age()
+        999
         """
         self.__age = new_age
 
@@ -112,6 +130,7 @@ class User:
         :param new_income: Income to replace current income with in a User object
         :precondition: parameter is an integer
         :postcondition: will change the income in an object
+
         """
         self.__income = new_income
 
