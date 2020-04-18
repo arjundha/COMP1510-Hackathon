@@ -60,13 +60,16 @@ def display_news_articles_menu():
             user_input = int(input(
                 "1. Top news about your current location\n"
                 "2. Global news about COVID-19\n"
-                "3. Search news articles by keyword\n"))
+                "3. Search news articles by keyword\n"
+                "4. Back to Menu\n"))
         except ValueError:
             print("Invalid input! Try again.")
             continue
         else:
             if 1 <= user_input <= 3:
                 menu_handler(user_input)  # Will direct user to their selected menu option
+            elif user_input == 2:
+                return app.option_menu()
             else:
                 print("Invalid input! Try again.")
 
@@ -225,7 +228,7 @@ def view_article_in_browser(url):
     """
     webbrowser.open_new(url)  # User's default browser will be launched
     input("Hit the enter key to continue")
-    return app.option_menu()
+    return display_news_articles_menu()
 
 
 def main():
