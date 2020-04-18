@@ -38,6 +38,10 @@ class User:
         Return the name in a User object.
 
         :return: User name as a string
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.get_name()
+        'Arjun Dhaliwal'
         """
         return self.__name
 
