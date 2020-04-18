@@ -31,7 +31,7 @@ def option_menu() -> int:
 
         6. Am I Eligible for the Canadian Emergency Response Benefit Funding?
         
-        7. Show effect of COVID-19 on DOW Jones Index
+        7. Show Effect of COVID-19 on DOW Jones Index
         
         8. Quit
 
