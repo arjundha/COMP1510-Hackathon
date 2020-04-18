@@ -2,6 +2,7 @@ import matplotlib.pyplot as plot
 import warnings
 from matplotlib import style
 import datetime
+
 warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas_datareader.data as web
 import pandas as pd
@@ -47,6 +48,8 @@ def plot_data(data_frame):
     # show the plot
     plot.show()
 
+    input("Hit enter to continue")
+
 
 def main():
     style.use("ggplot")
@@ -56,6 +59,7 @@ def main():
     create_csv(start, end)
     data_frame = read_csv()
     plot_data(data_frame)
+
 
 
 if __name__ == "__main__":

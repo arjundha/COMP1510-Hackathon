@@ -1,13 +1,13 @@
-import requests
 import market_data
 import covid19_stats
 import news
 import user_generation
 import funding
 import dow_plot
+import doctest
 
 
-def option_menu():
+def option_menu() -> int:
     """
     Ask user to choose option.
 
@@ -41,7 +41,7 @@ def option_menu():
             print("Please input a number that corresponds to an option on the menu.")
 
 
-def menu_handler(user_input, user):
+def menu_handler(user_input: int, user: object or str) -> object:
     """
     Return function that corresponds you user_input.
 
@@ -74,18 +74,24 @@ def menu_handler(user_input, user):
 
 
 def search_stocks():
+    """
+    Ask user for stock
+
+    :postcondition: will run ask_for_stock() and ask user for a stock and then display the information
+    """
     market_data.ask_for_stock()
 
 
 def show_dow_chart():
-    """Display a plot of the daily closes of the DOW Jones Index from 2020-1-1 to 2020-4-17.
+    """
+    Display DOW JONES chart
 
-    :postcondition: successfully displays a plot of the daily closes of the DOW Jones Index from 2020-1-1 to 2020-4-17
+    :postcondition: will run the main function in dow_plot file
     """
     dow_plot.main()
 
 
-def verify_canadian_funding(user):
+def verify_canadian_funding(user: object):
     """
     Verify if user is eligible for Canadian Emergency Response Benefit funding.
 
@@ -96,7 +102,7 @@ def verify_canadian_funding(user):
     funding.verify_for_funding(user)
 
 
-def my_country(user):
+def my_country(user: object or str):
     """
     Display statistics from user country
 
@@ -191,6 +197,7 @@ def main():
     """
     Run program.
     """
+    doctest.testmod()
     # Create user
     user = user_generation.create_user()
     # Check if user information is correct
