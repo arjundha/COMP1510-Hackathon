@@ -32,6 +32,7 @@ def verify_for_funding(user_object):
     else:
         print("Unfortunately, you do not appear to qualify for the CERB funding. You must be of at least 15 years of"
               " age, have made at least $5000 in the past year, and be a Canadian resident.\n")
+        input("Hit any button to continue")
 
 
 def verify_country(user_object):
@@ -91,10 +92,6 @@ def verify_income(user_object):
     >>> user_object = user.User("Jessica Hong", 15, 35000, "Canada", True)
     >>> verify_income(user_object)
     True
-
-    >>> user_object = user.User("Jessica Hong", 0, 0, "Canada", False)
-    >>> verify_income(user_object)
-    Sorry, you are not qualified for government funding!
     """
     # Check to see if user meets the CERB threshold for annual income
     if user_object.get_income() >= 5000:
@@ -120,7 +117,7 @@ def verify_if_student(user_object):
 
     #  If they are not a student, print a sad message :(
     else:
-        print("Apologies, you are not currently qualified for government funding.")
+        return
 
 
 def verify_province():
@@ -154,7 +151,7 @@ def verify_province():
             open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
 
         else:
-            print("Sorry, you are not qualified for government funding in British Columbia!")
+            return
 
 
 def open_link(url):
