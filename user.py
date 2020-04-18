@@ -131,6 +131,10 @@ class User:
         :precondition: parameter is an integer
         :postcondition: will change the income in an object
 
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user.set_income(999)
+        >>> test_user.get_income()
+        999
         """
         self.__income = new_income
 
