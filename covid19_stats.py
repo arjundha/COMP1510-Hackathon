@@ -4,6 +4,14 @@ import json
 
 
 def get(api_link):
+    """
+    Get response from api
+
+    :param api_link: a valid api request link
+    :preconditon: api_link must be a string
+    :postcondition: return the response as a json dictionary
+    :return: the response as a json dictionary
+    """
     # Get response from the api
     response = requests.get(api_link)
 
