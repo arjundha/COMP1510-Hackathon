@@ -244,7 +244,7 @@ def edit_user(new_user: object):
             sentinel = True
 
 
-def edit_user_info(user_input: str, user_object):
+def edit_user_info(user_input: str, user_object: object):
     """
     Set new values for the attributed in a User object based on user input.
 
