@@ -67,6 +67,6 @@ In terminal or command line, follow the following steps:
     
     
 # Links
-To view our requirements checklist, follow this link: <br>
+To view our requirements checklist, follow this link and click Sheet2: <br>
 https://docs.google.com/spreadsheets/d/1JzcajbcolEA8l2ZtXWv04-hl_BFQivgq4AR6XCG9juw/edit?usp=sharing
 
