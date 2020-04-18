@@ -39,7 +39,7 @@ def option_menu() -> int:
         
 8. Quit
 
-\n"""))
+\n""").strip())
 
         except ValueError:
             print("Please input a number that corresponds to an option on the menu.")
