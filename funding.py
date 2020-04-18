@@ -2,72 +2,97 @@
 Functions to verify if a user is qualified for CERB funding.
 """
 # Verify country, age, income, student, province
+import time
 import webbrowser
 import user
 import doctest
 
 
 def verify_for_funding(user_object):
+    """
+    Verify user for Canada's government funding.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object is verified for government funding
+    """
     verification = {"Country": verify_country(user_object), "Age": verify_age(user_object),
                     "Income": verify_income(user_object)}
 
     if all(value for value in verification.values()):
-        print("You are verified! Please follow the instructions in the link that has been opened.")
+        print("You are verified! Please follow the instructions in the link that will open in your browser.")
+        time.sleep(2)
         open_link("https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html")
 
 
 def verify_country(user_object):
+    """
+    Verify user's country.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's country is Canada
+
+    :return: A boolean if user_object's country is Canada
+    """
     return True if user_object.get_country() == "Canada" else False
 
 
 def verify_age(user_object):
+    """
+    Verify user's age.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's age is 15 or more
+
+    :return: A boolean if user_object's age is 15 or more
+    """
     return True if user_object.get_age() >= 15 else False
 
 
 def verify_income(user_object):
+    """
+    Verify user's income status.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Correctly verify if user_object's income is 5000 or more
+
+    :return: A boolean if income is more than 5000, otherwise invoke verify_if_student function
+    """
     if user_object.get_income() >= 5000:
-        return verify_province()
+        return True
     else:
-        if verify_if_student(user_object):
-            print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
-                  "A link has been opened for your educational viewing.")
-            open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+        verify_if_student(user_object)
 
 
 def verify_province():
     user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
 
-    print(user_province)
-    return True if user_province == "BRITISH COLUMBIA" or user_province == "BC" else False
+    if user_province == "BRITISH COLUMBIA" or user_province == "BC":
+        print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
+              "A link has been opened in your browser for your educational viewing.")
+        time.sleep(2)
+        open_link("https://news.gov.bc.ca/releases/2020AEST0018-000615")
+    else:
+        print("Sorry, you are not qualified for government funding in British Columbia!")
 
 
 def verify_if_student(user_object):
-    """
-    Verify if a user is a current post-secondary student.
-
-    :param user_object: a User object being verified for student enrollment
-    :return: True if the user is a student, else False
-    """
-    return True if user_object.get_student() else False
+    if user_object.get_student():
+        verify_province()
+    else:
+        print("Sorry, you are not qualified for government funding!")
 
 
 def open_link(url):
-    """
-    Open a URL link in the user's default browser.
-
-    :param url: a well-formed URL to be opened in the browser.
-    :precondition: the URL is an active page that can be opened by a browser
-    :postcondition: will open a webpage in the useer's default browser
-    """
     webbrowser.open_new(url)
 
 
 def main():
-    """
-    Test the functions in the module.
-    """
     doctest.testmod()
-    verify_for_funding(user.User("Jessica Hong", 23, 0, "Canada", True))
+    verify_for_funding(user.User("Jessica Hong", 23, 1000, "Canada", True))
 
 
 if __name__ == '__main__':

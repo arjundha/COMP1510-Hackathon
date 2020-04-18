@@ -14,6 +14,7 @@ def create_user() -> object:
 
     :precondition: User will enter valid data when prompted
     :postcondition: Will create a User object
+
     :return: A well-formed User object
     """
     name = enter_name()  # Get user's name as a string
@@ -31,6 +32,7 @@ def enter_name() -> str:
 
     :precondition: Enter your first and last name
     :postcondition: Will prepare the name for object assembly
+
     :return: User's name as a string
     """
     sentinel = False  # Sentinel value for checking if a name is valid or not
@@ -50,6 +52,7 @@ def validate_name(name: str) -> bool:
     :param name: Name of a user being checked for accurate formation
     :precondtion: The name parameter is a string
     :postcondition: Will attempt to match the name against the ReGex
+
     :return: A boolean True if it is a matched name, False if it is not
     """
     # REGEX EXAMPLE IS HERE
@@ -66,6 +69,7 @@ def enter_age() -> int:
     :precondition: User enters a positive integer when prompted.
     :postcondition: Will determine the age of a user.
     :raise ValueError when a user enters age less than or equal to 0
+
     :return: User age as an int
     """
     while True:
@@ -89,6 +93,7 @@ def enter_income() -> int:
     :precondition: User enters a positive integer when prompted.
     :postcondition: Will determine the income of a user.
     :raise ValueError when a user enters an income less than 0
+
     :return: Annual income as an int
     """
     while True:
@@ -113,6 +118,7 @@ def enter_country() -> str:
     :precondition: User enters a string representing a country when prompted
     :postcondition: Will return the country as a string to be used in object construction
     :raise ValueError when a user enters an empty string
+
     :return: a string representing the country where a user lives
     """
     while True:
@@ -143,6 +149,7 @@ def is_student() -> bool:
 
     :precondition: User enters 1 or 2 when prompted
     :postcondition: Will allow users the chance to declare their student status
+
     :return: a Boolean representing whether a user is a student or not (True if they are)
     """
     #  Prompt users to choose options 1 or 2 from an enumerated list (Yes or No)
