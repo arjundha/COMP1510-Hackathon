@@ -104,6 +104,13 @@ def verify_if_student(user_object):
 
 
 def open_link(url):
+    """
+    Open the article URL in user's default web browser.
+
+    :param url: A string
+    :precondition: url must be a well-formed string
+    :postcondition: Successfully open the article URL in user's default web browser
+    """
     webbrowser.open_new(url)
 
 
