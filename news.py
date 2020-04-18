@@ -80,8 +80,10 @@ def menu_handler(user_input: int):
     """
     if user_input == 1:
         get_default_country_top_headlines()
+
     elif user_input == 2:
         covid_news()
+
     elif user_input == 3:
         get_articles_by_keyword()
 
@@ -131,14 +133,18 @@ def get_user_keyword() -> str:
     while True:
         try:
             keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
+
             # Will raise ValueError if keyword is empty
             if keyword == "":
                 raise ValueError
+
         except ValueError:
             print("Invalid input, try again!")
             continue
+
         else:
             keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
+
             # Will stop while loop
             return keyword
 
@@ -192,14 +198,17 @@ def get_user_article_choice() -> int:
     while True:
         try:
             article_num = int(input("\nWhich article would you like to view?: "))
+
         except ValueError:
             print("Invalid input! Try again.")
             # Will continue the while loop
             continue
+
         else:
             if 0 < article_num <= 5:
                 # Stop while loop iteration
                 return article_num
+
             else:
                 print("That's not a valid article number, try again!")
 
