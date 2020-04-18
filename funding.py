@@ -37,7 +37,7 @@ def verify_for_funding(user_object: object):
               " age, have made at least $5000 in the past year, and be a Canadian resident.\n")
 
         # The below input stalls the screen so users can read before the main menu appears again
-        input("Hit any button to continue")
+        input("Hit enter to continue")
 
 
 def verify_country(user_object: object) -> bool:
