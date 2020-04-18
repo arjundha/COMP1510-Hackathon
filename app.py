@@ -83,6 +83,11 @@ def search_stocks():
 
 
 def show_dow_chart():
+    """
+    Display DOW JONES chart
+
+    :postcondition: will run the main function in dow_plot file
+    """
     dow_plot.main()
 
 
