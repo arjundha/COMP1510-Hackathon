@@ -3,7 +3,6 @@ Handles retrieval of news data and articles
 """
 import doctest
 import json
-import app
 import webbrowser
 import requests
 import default_country
