@@ -56,6 +56,14 @@ def verify_age(user_object):
     :postcondition: Correctly verify if user_object's age is 15 or more
 
     :return: A boolean if user_object's age is 15 or more
+
+    >>> user_object = user.User("Jessica Hong", 15, 35000, "Canada", True)
+    >>> verify_age(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 0, 0, "United States", False)
+    >>> verify_age(user_object)
+    False
     """
     return True if user_object.get_age() >= 15 else False
 
