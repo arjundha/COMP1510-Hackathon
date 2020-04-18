@@ -1,4 +1,3 @@
-import requests
 import market_data
 import covid19_stats
 import news
@@ -7,7 +6,7 @@ import funding
 import dow_plot
 
 
-def option_menu():
+def option_menu() -> int:
     """
     Ask user to choose option.
 
@@ -41,7 +40,7 @@ def option_menu():
             print("Please input a number that corresponds to an option on the menu.")
 
 
-def menu_handler(user_input, user):
+def menu_handler(user_input: int, user: object or str) -> object:
     """
     Return function that corresponds you user_input.
 
@@ -81,7 +80,7 @@ def show_dow_chart():
     dow_plot.main()
 
 
-def verify_canadian_funding(user):
+def verify_canadian_funding(user: object):
     """
     Verify if user is eligible for Canadian Emergency Response Benefit funding.
 
@@ -92,7 +91,7 @@ def verify_canadian_funding(user):
     funding.verify_for_funding(user)
 
 
-def my_country(user):
+def my_country(user: object or str):
     """
     Display statistics from user country
 
