@@ -35,6 +35,14 @@ def verify_country(user_object):
     :postcondition: Correctly verify if user_object's country is Canada
 
     :return: A boolean if user_object's country is Canada
+
+    >>> user_object = user.User("Jessica Hong", 23, 35000, "Canada", True)
+    >>> verify_country(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 23, 0, "United States", False)
+    >>> verify_country(user_object)
+    False
     """
     return True if user_object.get_country() == "Canada" else False
 
@@ -48,6 +56,14 @@ def verify_age(user_object):
     :postcondition: Correctly verify if user_object's age is 15 or more
 
     :return: A boolean if user_object's age is 15 or more
+
+    >>> user_object = user.User("Jessica Hong", 15, 35000, "Canada", True)
+    >>> verify_age(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 0, 0, "United States", False)
+    >>> verify_age(user_object)
+    False
     """
     return True if user_object.get_age() >= 15 else False
 
@@ -61,6 +77,14 @@ def verify_income(user_object):
     :postcondition: Correctly verify if user_object's income is 5000 or more
 
     :return: A boolean if income is more than 5000, otherwise invoke verify_if_student function
+
+    >>> user_object = user.User("Jessica Hong", 15, 35000, "Canada", True)
+    >>> verify_income(user_object)
+    True
+
+    >>> user_object = user.User("Jessica Hong", 0, 0, "Canada", False)
+    >>> verify_income(user_object)
+    Sorry, you are not qualified for government funding!
     """
     if user_object.get_income() >= 5000:
         return True
