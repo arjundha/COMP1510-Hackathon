@@ -1,7 +1,7 @@
 # API KEY: e454fda9cf5b4a5d8e6f8bc3d960c7b5
 import doctest
 import json
-import textwrap
+import app
 import webbrowser
 import requests
 import default_country
@@ -17,6 +17,7 @@ def print_messages(original_func):  # DEMONSTRATES DECORATORS
 
     :return: wrapper_printer
     """
+
     def wrapper_printer(*args, **kwargs):
         print("\nLoading...")
         original_func(*args, **kwargs)
@@ -224,6 +225,7 @@ def view_article_in_browser(url):
     """
     webbrowser.open_new(url)  # User's default browser will be launched
     input("Hit the enter key to continue")
+    return app.option_menu()
 
 
 def main():
