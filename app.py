@@ -4,6 +4,7 @@ import news
 import user_generation
 import funding
 import dow_plot
+import doctest
 
 
 def option_menu() -> int:
@@ -73,6 +74,11 @@ def menu_handler(user_input: int, user: object or str) -> object:
 
 
 def search_stocks():
+    """
+    Ask user for stock
+
+    :postcondition: will run ask_for_stock() and ask user for a stock and then display the information
+    """
     market_data.ask_for_stock()
 
 
@@ -186,6 +192,7 @@ def main():
     """
     Run program.
     """
+    doctest.testmod()
     # Create user
     user = user_generation.create_user()
     # Check if user information is correct
