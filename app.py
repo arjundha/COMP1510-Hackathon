@@ -95,7 +95,7 @@ def search_stocks():
 
 def show_dow_chart():
     """
-    Display DOW JONES chart
+    Display DOW JONES chart.
 
     :postcondition: will run the main function in dow_plot file
     """
@@ -115,7 +115,7 @@ def verify_canadian_funding(user: object):
 
 def my_country(user: object or str):
     """
-    Display statistics from user country
+    Display statistics from user country.
 
     :param user: a well formed user object
     :precondition: user must be an object created in user_generation

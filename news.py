@@ -7,7 +7,7 @@ import requests
 import default_country
 
 
-def print_messages(original_func):
+def print_messages(original_func):  # DEMONSTRATES DECORATORS
     """
     Print loading messages to display for user.
 
@@ -53,20 +53,21 @@ def display_news_articles_menu():
     :precondition: User input must be an integer between 1 and 3
     :postcondition: Successfully handle user's input using menu_handler function
     """
-    try:
-        # Get user input after displaying menu
-        user_input = int(input(
-            "1. Top news about your current location\n"
-            "2. Global news about COVID-19\n"
-            "3. Search news articles by keyword\n"))
-    except ValueError:
-        print("Invalid input! Try again.")
-    else:
-        if 1 <= user_input <= 3:
-            menu_handler(user_input)  # Will direct user to their selected menu option
-        else:
+    while True:
+        try:
+            # Get user input after displaying menu
+            user_input = int(input(
+                "1. Top news about your current location\n"
+                "2. Global news about COVID-19\n"
+                "3. Search news articles by keyword\n"))
+        except ValueError:
             print("Invalid input! Try again.")
-            display_news_articles_menu()  # Try to get user's input again after invalid input
+            continue
+        else:
+            if 1 <= user_input <= 3:
+                menu_handler(user_input)  # Will direct user to their selected menu option
+            else:
+                print("Invalid input! Try again.")
 
 
 def menu_handler(user_input):
@@ -126,11 +127,8 @@ def get_user_keyword() -> str:
 
     :return: keyword as a string
     """
-    # Boolean flag
-    unchecked_input = True
-
     # Loop until there is valid input
-    while unchecked_input:
+    while True:
         try:
             keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
             # Will raise ValueError if keyword is empty
@@ -142,7 +140,6 @@ def get_user_keyword() -> str:
         else:
             keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
             # Will stop while loop
-            unchecked_input = False
             return keyword
 
 
@@ -191,11 +188,8 @@ def get_user_article_choice() -> int:
 
     :return: User's choice of article number as an integer
     """
-    # Boolean flag
-    unchecked_input = True
-
     # Loop until there is valid input
-    while unchecked_input:
+    while True:
         try:
             article_num = int(input("\nWhich article would you like to view?: "))
         except ValueError:
@@ -205,7 +199,6 @@ def get_user_article_choice() -> int:
         else:
             if 0 < article_num <= 5:
                 # Stop while loop iteration
-                unchecked_input = False
                 return article_num
             else:
                 print("That's not a valid article number, try again!")
@@ -221,7 +214,7 @@ def view_article_in_browser(url):
     :postcondition: Successfully open the article URL in user's default web browser
     """
     webbrowser.open_new(url)  # User's default browser will be launched
-    input("Hit any button to continue")
+    input("Hit the enter key to continue")
 
 
 def main():

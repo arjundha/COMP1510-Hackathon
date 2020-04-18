@@ -48,7 +48,7 @@ def plot_data(data_frame):
     # show the plot
     plot.show()
 
-    input("Hit enter to continue")
+    input("Press enter to continue")
 
 
 def main():
