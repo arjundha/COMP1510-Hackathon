@@ -23,11 +23,15 @@ def verify_for_funding(user_object):
     # If every value in the verification dictionary is true, it will do the following:
     if all(value for value in verification.values()):
         print("You are verified for funding! "
-              "Please follow the instructions in the link that will open in your browser.")
+              "Please follow the instructions in the link that will open in your browser.\n")
 
         # After two seconds, the user's default browser will be launched to the CERB page on canada.ca
         time.sleep(2)
         open_link("https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html")
+
+    else:
+        print("Unfortunately, you do not appear to qualify for the CERB funding. You must be of at least 15 years of"
+              " age, have made at least $5000 in the past year, and be a Canadian resident.\n")
 
 
 def verify_country(user_object):
