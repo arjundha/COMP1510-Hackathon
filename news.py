@@ -80,6 +80,7 @@ def display_news_articles_menu():
                 menu_handler(user_input)
 
             elif user_input == 4:
+                # Exit the while loop by changing the sentinel value
                 sentinel = True
 
             else:
