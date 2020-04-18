@@ -9,7 +9,8 @@ import requests
 import default_country
 
 
-def print_messages(original_func):  # DEMONSTRATES DECORATORS
+# DEMONSTRATES DECORATORS
+def print_messages(original_func):
     """
     Print loading messages to display for user.
 
@@ -69,7 +70,8 @@ def display_news_articles_menu():
             continue
         else:
             if 1 <= user_input <= 3:
-                menu_handler(user_input)  # Will direct user to their selected menu option
+                # Will direct user to their selected menu option
+                menu_handler(user_input)
             elif user_input == 4:
                 return app.option_menu()
             else:
@@ -106,7 +108,8 @@ def get_default_country_top_headlines():
     country_news_info = verify_news_api_response("https://newsapi.org/v2/top-headlines?country="
                                                  + country_code + "&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
-    articles_of_country = country_news_info["articles"][0:5]  # Get the top 5 articles
+    # Get the top 5 articles
+    articles_of_country = country_news_info["articles"][0:5]
 
     print("These are the top 5 news articles of your current country location: \n")
     display_headline_title(articles_of_country)
@@ -121,7 +124,8 @@ def covid_news():
     covid_news_info = verify_news_api_response("https://newsapi.org/v2/everything?q=covid-19"
                                                "&sortBy=popularity&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
-    top_covid_news_articles = covid_news_info['articles'][0:5]  # Get the top 5 COVID-19 news articles
+    # Get the top 5 COVID-19 news articles
+    top_covid_news_articles = covid_news_info['articles'][0:5]
 
     print("These are the top 5 global news articles for COVID-19: \n")
     display_headline_title(top_covid_news_articles)
@@ -150,7 +154,8 @@ def get_user_keyword() -> str:
             continue
 
         else:
-            keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
+            # Replaces spaces with '+' to align with News API's search query format
+            keyword = keyword.replace(' ', '+')
 
             # Will stop while loop
             return keyword
@@ -183,12 +188,15 @@ def display_headline_title(articles: list):
     :precondition: articles must be a well-formed list
     :postcondition: Successfully display the headline of the top 5 articles
     """
-    for num, article in enumerate(articles, 1):  # Demonstrates ENUMERATE
-        print(num, article["title"])  # Print out the headings in an ordered list
+    # Demonstrates ENUMERATE
+    for num, article in enumerate(articles, 1):
+        # Print out the headings in an ordered list
+        print(num, article["title"])
 
     view_choice = get_user_article_choice()
 
-    if view_choice:  # If view choice is not empty
+    # If view choice is not empty
+    if view_choice:
         view_article_in_browser(articles[view_choice - 1]['url'])
 
 
@@ -229,7 +237,8 @@ def view_article_in_browser(url):
     :precondition: url must be a well-formed string
     :postcondition: Successfully open the article URL in user's default web browser
     """
-    webbrowser.open_new(url)  # User's default browser will be launched
+    # User's default browser will be launched
+    webbrowser.open_new(url)
     input("Hit the enter key to continue")
     return display_news_articles_menu()
 

@@ -43,7 +43,7 @@ def global_stats():
     return get('https://api.covid19api.com/summary')
 
 
-def get_country_stats(country: str) -> str:
+def get_country_stats(country: str) -> int or slice or str:
     """
     Search api dictionary for country
 
