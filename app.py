@@ -13,6 +13,7 @@ def option_menu() -> int:
 
     :precondition: input must be a number that corresponds with an option
     :postcondition: will return the user's choice as an int
+
     :return: input as an int
     """
     while True:
@@ -51,24 +52,34 @@ def menu_handler(user_input: int, user: object or str) -> object:
     :precondition: user must be an object created in user_generation
     :postcondition: will return the function that corresponds with desired option
     :raise: TypeError if user_input does not correspond with and option
+
     :return: a function that corresponds with user_input
     """
     if user_input == 1:
         return global_statistics()
+
     if user_input == 2:
         return my_country(user)
+
     if user_input == 3:
         return country_search()
+
     if user_input == 4:
         return get_news()
+
     if user_input == 5:
         search_stocks()
+
     if user_input == 6:
         return verify_canadian_funding(user)
+
     if user_input == 7:
         show_dow_chart()
+
     if user_input == 8:
+        print("Have a nice day, and remember to wash your hands!")
         quit()
+
     else:
         raise TypeError
 
@@ -111,6 +122,7 @@ def my_country(user: object or str):
     :postcondition: will display all information regarding the user's inputted location
     """
     print(user.get_country())
+
     # Get Country stats by passing it to get_country_stats
     country_stats = covid19_stats.get_country_stats(user.get_country())
     display_statistics(country_stats)
@@ -152,12 +164,13 @@ def country_search():
 
 def global_statistics():
     """
-    Display the global Covid-19 statistics.
+    Display the global COVID-19 statistics.
 
     :postcondition: will display all statistics for the world
     """
     # Get the dictionary from from the api
     global_dict = covid19_stats.global_stats()
+
     # Specify the key
     statistics = global_dict['Global']
 
@@ -198,15 +211,21 @@ def main():
     Run program.
     """
     doctest.testmod()
+    # Welcome message
+    print("Welcome to the COVID-19 App! Before we get started, lets generate your user profile.")
+
     # Create user
     user = user_generation.create_user()
+
     # Check if user information is correct
     user_generation.check_if_user_information_is_correct(user)
 
     while True:
         user_choice = option_menu()
+
         try:
             menu_handler(user_choice, user)
+
         except TypeError:
             print("Your input was invalid or not an option, try again")
 

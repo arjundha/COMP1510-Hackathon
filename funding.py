@@ -32,6 +32,8 @@ def verify_for_funding(user_object):
     else:
         print("Unfortunately, you do not appear to qualify for the CERB funding. You must be of at least 15 years of"
               " age, have made at least $5000 in the past year, and be a Canadian resident.\n")
+
+        # The below input stalls the screen so users can read before the main menu appears again
         input("Hit any button to continue")
 
 
@@ -130,7 +132,7 @@ def verify_province():
     """
     try:
         # Ask user for their Province or Territory
-        user_province = input("What province do you currently reside in? (EX. BC) ").upper().strip()
+        user_province = province_selector()
 
         # If the user enters an empty string, raise a ValueError
         if user_province == "":
@@ -144,7 +146,7 @@ def verify_province():
         # If the user entered British Columbia in some capacity, open a link to the emergency funding on gov.bc.ca
         if user_province == "BRITISH COLUMBIA" or user_province == "BC":
 
-            print("Because you are a post-secondary student, BC's government is ensuring emergency support. "
+            print("Because you are a post-secondary student, BC's government is offering you emergency support. "
                   "A link has been opened in your browser for your educational viewing.")
 
             time.sleep(2)  # Wait two seconds before opening the link to provide time for user to digest the message
@@ -152,6 +154,34 @@ def verify_province():
 
         else:
             return
+
+
+def province_selector():
+    """
+    Select a province or territory.
+
+    :precondition: User enters in the correct province or territory
+    :postcondition: Will return the user selection
+
+    :return: User province/territory as a string in uppercase
+    """
+    #  A tuple containing all of the Canadian provinces and territories
+    provinces_and_territories = ("Alberta", "British Columbia", "Saskatchewan", "Manitoba", "Ontario", "Quebec",
+                                 "New Brunswick", "Nova Scotia", "Prince Edward Island", "Newfoundland", "Nunavut",
+                                 "Northwest Territories", "Yukon")
+
+    # Prepare the user for input request
+    print("Which province or territory do you live in?")
+
+    # Use a for loop to iterate through the range of the tuple and print each index in the tuple for viewing pleasure
+    for i in range(len(provinces_and_territories)):
+        print(provinces_and_territories[i])
+
+    # Ask which province/territory user lives in
+    user_province = input("Enter your response either in the fullname or acronym "
+                          "(ex. British Columbia or BC): ").upper().strip()
+
+    return user_province
 
 
 def open_link(url):

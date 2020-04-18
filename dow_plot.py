@@ -59,7 +59,3 @@ def main():
     create_csv(start, end)
     data_frame = read_csv()
     plot_data(data_frame)
-
-
-if __name__ == "__main__":
-    main()
