@@ -36,6 +36,14 @@ def global_stats():
 
 
 def get_country_stats(country):
+    """
+    Search api dictionary for country
+
+    :param country: a country
+    :precondition: country must be a string
+    :postcondition: will search through the dictionary of countries from api for the country
+    :return: the country as a string
+    """
     # Search list for specified country key
     return next(item for item in get('https://api.covid19api.com/summary')['Countries'] if
                 item["Country"].lower() == country.strip().lower())
