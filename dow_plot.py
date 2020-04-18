@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plot
 import warnings
-warnings.simplefilter(action="ignore", category=FutureWarning)
 from matplotlib import style
 import datetime
-import pandas as pd
+warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas_datareader.data as web
+import pandas as pd
 
 
 def create_csv(start, end):
