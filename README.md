@@ -41,7 +41,7 @@ The matplotlib package is used to plot the data in the data_frame.
 
 Finally, these APIs were used in the development of this application:
 1. news.api (https://newsapi.org/)
-2. ipifi API (https://api.ipify.org/)
+2. ipify API (https://api.ipify.org/)
 
 # Getting Started
 The following steps must be executed before running the application.
