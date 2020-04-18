@@ -17,7 +17,16 @@ class User:
         :param student: Boolean representing whether or not the user is a student
         :precondition: User has entered in well-formed parameters that meet the data type requirements
         :postcondition: User class object will be created
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user
+        User("Arjun Dhaliwal", 24, $0, Canada, True)
+
+        >>> test_user = User("Chris Thompson", 30, 500000, "Canada", False)
+        >>> test_user
+        User("Chris Thompson", 30, $500000, Canada, False)
         """
+        # Initialize each variable into the class object
         self.__name = name
         self.__age = age
         self.__income = income
