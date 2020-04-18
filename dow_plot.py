@@ -53,6 +53,9 @@ def plot_data(data_frame):
 
 
 def main():
+    """
+    Run the functions in this file.
+    """
     style.use("ggplot")
     start = datetime.datetime(2020, 1, 1)
     end = datetime.datetime(2020, 4, 17)
