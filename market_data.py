@@ -30,23 +30,30 @@ def check_with_user(stock: str) -> object:
         try:
             # Declare ticker
             ticker = yf.Ticker(stock)
-        except ImportError:
+        except ImportError or KeyError:
             # Except error and inform user
             print("We can't find the stock entered..")
             print("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
         else:
             # Clarify with user
-            print("Is this the desired Company?")
-            print(ticker.info['longName'])
-            user_input = input("1. Yes\n2. No\n")
+            try:
+                print("Is this the desired Company?")
+                print(ticker.info['longName'])
+            except IndexError or KeyError:
+                print("There seems to be an issue fetching the information for the stock entered")
+                print(
+                    "Please try a different stock, input the stock abbreviated name.\n")
+                ask_for_stock()
+            else:
+                user_input = input("1. Yes\n2. No\n")
 
-            if user_input == '1':
-                # Display info
-                return display_info(ticker.info)
-            elif user_input == '2':
-                # Repeat if user is not satisfied
-                "Make sure you enter the abbreviated stock name correctly"
-                return ask_for_stock()
+                if user_input == '1':
+                    # Display info
+                    return display_info(ticker.info)
+                elif user_input == '2':
+                    # Repeat if user is not satisfied
+                    "Make sure you enter the abbreviated stock name correctly"
+                    return ask_for_stock()
 
 
 def display_info(stock_ticker: dict) -> object:
