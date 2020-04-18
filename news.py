@@ -53,9 +53,7 @@ def display_news_articles_menu():
     :precondition: User input must be an integer between 1 and 3
     :postcondition: Successfully handle user's input using menu_handler function
     """
-    unchecked_input = True
-
-    while unchecked_input:
+    while True:
         try:
             # Get user input after displaying menu
             user_input = int(input(
@@ -67,7 +65,6 @@ def display_news_articles_menu():
             continue
         else:
             if 1 <= user_input <= 3:
-                unchecked_input = False
                 menu_handler(user_input)  # Will direct user to their selected menu option
             else:
                 print("Invalid input! Try again.")
@@ -130,11 +127,8 @@ def get_user_keyword() -> str:
 
     :return: keyword as a string
     """
-    # Boolean flag
-    unchecked_input = True
-
     # Loop until there is valid input
-    while unchecked_input:
+    while True:
         try:
             keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
             # Will raise ValueError if keyword is empty
@@ -146,7 +140,6 @@ def get_user_keyword() -> str:
         else:
             keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
             # Will stop while loop
-            unchecked_input = False
             return keyword
 
 
@@ -195,11 +188,8 @@ def get_user_article_choice() -> int:
 
     :return: User's choice of article number as an integer
     """
-    # Boolean flag
-    unchecked_input = True
-
     # Loop until there is valid input
-    while unchecked_input:
+    while True:
         try:
             article_num = int(input("\nWhich article would you like to view?: "))
         except ValueError:
@@ -209,7 +199,6 @@ def get_user_article_choice() -> int:
         else:
             if 0 < article_num <= 5:
                 # Stop while loop iteration
-                unchecked_input = False
                 return article_num
             else:
                 print("That's not a valid article number, try again!")
