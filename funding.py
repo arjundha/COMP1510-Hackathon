@@ -89,6 +89,14 @@ def verify_province():
 
 
 def verify_if_student(user_object):
+    """
+    Verify if user is a student.
+
+    :param user_object: User object
+    :precondition: user_object must be a well-formed User object
+    :postcondition: Will successfully invoke verify_province function if user is a student, otherwise print a
+    rejection message
+    """
     if user_object.get_student():
         verify_province()
     else:
