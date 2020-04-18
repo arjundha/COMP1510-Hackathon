@@ -66,7 +66,7 @@ def display_info(stock_ticker: dict) -> object:
     wrapper = textwrap.TextWrapper(width=100)
     word_list = wrapper.wrap(text=summary)
 
-    # Check if markets are closed
+    # Check if dividendYield has a value
     try:
         dividend_yield = float(stock_ticker['dividendYield']) * 100
     except TypeError:
@@ -103,11 +103,15 @@ Business Summary:
     # Ask user what they want to do next
     while True:
         user_input = input("1: Enter another stock?\n2: Back to menu\n3: Quit")
+
         if user_input == '1':
+            # Ask user for new stock
             return ask_for_stock()
         elif user_input == '2':
+            # Return to option menu
             return app.option_menu()
         elif user_input == '3':
             quit()
         else:
+            # Inform user
             print("Sorry please choose 1 of the 3 options.\n")
