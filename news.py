@@ -68,7 +68,7 @@ def display_news_articles_menu():
         else:
             if 1 <= user_input <= 3:
                 menu_handler(user_input)  # Will direct user to their selected menu option
-            elif user_input == 2:
+            elif user_input == 4:
                 return app.option_menu()
             else:
                 print("Invalid input! Try again.")
