@@ -54,6 +54,7 @@ def display_news_articles_menu():
     :postcondition: Successfully handle user's input using menu_handler function
     """
     try:
+        # Get user input after displaying menu
         user_input = int(input(
             "1. Top news about your current location\n"
             "2. Global news about COVID-19\n"
@@ -62,10 +63,10 @@ def display_news_articles_menu():
         print("Invalid input! Try again.")
     else:
         if 1 <= user_input <= 3:
-            menu_handler(user_input)
+            menu_handler(user_input)  # Will direct user to their selected menu option
         else:
             print("Invalid input! Try again.")
-            display_news_articles_menu()
+            display_news_articles_menu()  # Try to get user's input again after invalid input
 
 
 def menu_handler(user_input):
@@ -90,12 +91,13 @@ def get_default_country_top_headlines():
 
     :postcondition: Successfully get the news articles of the user's current country location.
     """
-    country_code = default_country.get_default_country(default_country.get_ip())
+    country_code = default_country.get_default_country(default_country.get_ip())  # Get the user's default country code
 
     country_news_info = verify_news_api_response("https://newsapi.org/v2/top-headlines?country="
                                                  + country_code + "&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
 
-    articles_of_country = country_news_info["articles"][0:5]
+    articles_of_country = country_news_info["articles"][0:5]  # Get the top 5 articles
+
     print("These are the top 5 news articles of your current country location: \n")
     display_headline_title(articles_of_country)
 
@@ -108,7 +110,9 @@ def covid_news():
     """
     covid_news_info = verify_news_api_response("https://newsapi.org/v2/everything?q=covid-19"
                                                "&sortBy=popularity&apiKey=e454fda9cf5b4a5d8e6f8bc3d960c7b5")
-    top_covid_news_articles = covid_news_info['articles'][0:5]
+
+    top_covid_news_articles = covid_news_info['articles'][0:5]  # Get the top 5 COVID-19 news articles
+
     print("These are the top 5 global news articles for COVID-19: \n")
     display_headline_title(top_covid_news_articles)
 
@@ -142,7 +146,10 @@ def get_articles_by_keyword():
     keyword_news_info = verify_news_api_response("https://newsapi.org/v2/"
                                                  "everything?q=" + keyword + "&sortBy=popularity&apiKey="
                                                                              "e454fda9cf5b4a5d8e6f8bc3d960c7b5")
+
+    # Get the top 5 articles using the user's entered keyword
     keyword_news_articles = keyword_news_info['articles'][0:5]
+
     print("These are the top 5 articles for " + keyword + ": \n")
     display_headline_title(keyword_news_articles)
 
@@ -156,11 +163,11 @@ def display_headline_title(articles: list):
     :postcondition: Successfully display the headline of the top 5 articles
     """
     for num, article in enumerate(articles, 1):
-        print(num, article["title"])
+        print(num, article["title"])  # Print out the headings in an ordered list
 
     view_choice = get_user_article_choice()
 
-    if view_choice:
+    if view_choice:  # If view choice is not empty
         view_article_in_browser(articles[view_choice - 1]['url'])
 
 
@@ -182,7 +189,7 @@ def get_user_article_choice() -> int:
             return article_num
         else:
             print("That's not a valid article number, try again!")
-            get_user_article_choice()
+            get_user_article_choice()  # Try to get user's input again after invalid input
 
 
 @print_messages
@@ -194,7 +201,7 @@ def view_article_in_browser(url):
     :precondition: url must be a well-formed string
     :postcondition: Successfully open the article URL in user's default web browser
     """
-    webbrowser.open_new(url)
+    webbrowser.open_new(url)  # User's default browser will be launched
     input("Hit any button to continue")
 
 
