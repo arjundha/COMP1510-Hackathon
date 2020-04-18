@@ -1,3 +1,6 @@
+"""
+Get default country for user based on their current location.
+"""
 from requests import get
 from ip2geotools.databases.noncommercial import DbIpCity
 

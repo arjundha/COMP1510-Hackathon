@@ -3,12 +3,13 @@ import warnings
 from matplotlib import style
 import datetime
 
+# Filtering out the futureWarning that pandas_datareader and pandas cause.  This does cause a PEP8 issue, however.
 warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas_datareader.data as web
 import pandas as pd
 
 
-def create_csv(start, end):
+def create_csv(start: object, end: object):
     """Create a csv files with the financial data of the DOW jones from 2020-1-1 to 2020-4-17.
 
     :param start: an object containing the datetime on January 1st, 2020
