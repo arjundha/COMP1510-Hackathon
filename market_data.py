@@ -72,7 +72,7 @@ def display_info(stock_ticker):
 
     # Print information regarding stock_ticker
     print(f"""
-{stock_ticker['shortName']}    {stock_ticker['currency']}           
+{stock_ticker['shortName']}    {stock_ticker['currency']}$         
 _______________________________________________________
 
 Daily High:         {stock_ticker['dayHigh']}
