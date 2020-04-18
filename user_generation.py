@@ -54,6 +54,14 @@ def validate_name(name: str) -> bool:
     :postcondition: Will attempt to match the name against the ReGex
 
     :return: A boolean True if it is a matched name, False if it is not
+
+    >>> name = "Jessica Hong"
+    >>> validate_name(name)
+    True
+
+    >>> name = "m nakamoto"
+    >>> validate_name(name)
+    False
     """
     # REGEX EXAMPLE IS HERE
     name_regex = re.compile(r'^[A-Z][a-zA-Z\-]* [A-Z][a-zA-Z\-]*$')  # ReGex for checking name formation
