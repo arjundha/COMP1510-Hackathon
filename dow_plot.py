@@ -1,3 +1,6 @@
+"""
+Displays DOW stock graph
+"""
 import matplotlib.pyplot as plot
 import warnings
 from matplotlib import style

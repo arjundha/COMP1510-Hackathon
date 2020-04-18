@@ -1,4 +1,6 @@
-# API KEY: e454fda9cf5b4a5d8e6f8bc3d960c7b5
+"""
+Handles retrieval of news data and articles
+"""
 import doctest
 import json
 import app

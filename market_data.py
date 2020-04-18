@@ -1,3 +1,6 @@
+"""
+Handles retrieval of market data
+"""
 import yfinance as yf
 import textwrap
 import app

@@ -1,4 +1,6 @@
-import doctest
+"""
+Handles retrieval of covid-19 statistics
+"""
 import requests
 import json
 import doctest
