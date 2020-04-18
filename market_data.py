@@ -111,9 +111,6 @@ Business Summary:
 
     print("\n")
 
-    # Wait for user
-    input("Hit enter to continue\n")
-
     # Ask user what they want to do next
     while True:
         user_input = input("1: Enter another stock?\n2: Back to menu\n3: Quit")
