@@ -126,16 +126,24 @@ def get_user_keyword() -> str:
 
     :return: keyword as a string
     """
-    try:
-        keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
+    # Boolean flag
+    unchecked_input = True
 
-        # if keyword == "":
-        #     raise ValueError
-    except ValueError:
-        print("Invalid input, try again!")
-    else:
-        keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
-        return keyword
+    # Loop until there is valid input
+    while unchecked_input:
+        try:
+            keyword = input("What articles would you like to search? ")  # Get the user's keyword choice
+            # Will raise ValueError if keyword is empty
+            if keyword == "":
+                raise ValueError
+        except ValueError:
+            print("Invalid input, try again!")
+            continue
+        else:
+            keyword = keyword.replace(' ', '+')  # Replaces spaces with '+' to align with News API's search query format
+            # Will stop while loop
+            unchecked_input = False
+            return keyword
 
 
 def get_articles_by_keyword():
@@ -165,7 +173,7 @@ def display_headline_title(articles: list):
     :precondition: articles must be a well-formed list
     :postcondition: Successfully display the headline of the top 5 articles
     """
-    for num, article in enumerate(articles, 1):
+    for num, article in enumerate(articles, 1):  # Demonstrates ENUMERATE
         print(num, article["title"])  # Print out the headings in an ordered list
 
     view_choice = get_user_article_choice()
@@ -183,16 +191,24 @@ def get_user_article_choice() -> int:
 
     :return: User's choice of article number as an integer
     """
-    try:
-        article_num = int(input("\nWhich article would you like to view?: "))
-    except ValueError:
-        print("Invalid input! Going back to menu.")
-    else:
-        if 1 <= article_num <= 5:
-            return article_num
+    # Boolean flag
+    unchecked_input = True
+
+    # Loop until there is valid input
+    while unchecked_input:
+        try:
+            article_num = int(input("\nWhich article would you like to view?: "))
+        except ValueError:
+            print("Invalid input! Try again.")
+            # Will continue the while loop
+            continue
         else:
-            print("That's not a valid article number, try again!")
-            get_user_article_choice()  # Try to get user's input again after invalid input
+            if 0 < article_num <= 5:
+                # Stop while loop iteration
+                unchecked_input = False
+                return article_num
+            else:
+                print("That's not a valid article number, try again!")
 
 
 @print_messages
