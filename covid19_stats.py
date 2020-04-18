@@ -1,6 +1,7 @@
 import doctest
 import requests
 import json
+import doctest
 
 
 def get(api_link):
@@ -45,6 +46,11 @@ def get_country_stats(country):
     :precondition: country must be a string
     :postcondition: will search through the dictionary of countries from api for the country
     :return: the country as a string
+
+    >>> get_country_stats('canada')['Country']
+    'Canada'
+    >>> get_country_stats('United States of America')['Country']
+    'United States of America'
     """
     # Search list for specified country key
     return next(item for item in get('https://api.covid19api.com/summary')['Countries'] if

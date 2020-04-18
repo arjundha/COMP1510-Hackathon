@@ -20,21 +20,21 @@ def option_menu() -> int:
         print("Please select an option from the following menu.")
         try:
             return int(input("""
-        1. Global Statistics
+1. Global Statistics
 
-        2. Information about my Country
+2. Information about my Country
 
-        3. Search by Country
+3. Search by Country
 
-        4. News Articles
+4. News Articles
         
-        5. Search Stocks
+5. Search Stocks
 
-        6. Am I Eligible for the Canadian Emergency Response Benefit Funding?
+6. Am I Eligible for the Canadian Emergency Response Benefit Funding?
         
-        7. Show Effect of COVID-19 on DOW Jones Index
+7. Show effect of COVID-19 on DOW Jones Index
         
-        8. Quit
+8. Quit
 
 \n"""))
 
