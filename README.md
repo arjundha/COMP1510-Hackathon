@@ -23,7 +23,7 @@ In terminal or command line, follow the following steps:
     
     OR
     
-    Install the requirements.txt by 
+    pip3 install -r requirements.txt
     
     
 # Links
