@@ -211,6 +211,7 @@ def main():
     Run program.
     """
     doctest.testmod()
+
     # Welcome message
     print("Welcome to the COVID-19 App! Before we get started, lets generate your user profile.")
 
