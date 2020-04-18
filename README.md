@@ -23,12 +23,10 @@ In terminal or command line, follow the following steps:
     
     OR
     
-    pip3 install -r requirements.txt
+    Install the requirements.txt by 
     
     
 # Links
 To view our requirements checklist, follow this link: <br>
 https://docs.google.com/spreadsheets/d/1JzcajbcolEA8l2ZtXWv04-hl_BFQivgq4AR6XCG9juw/edit?usp=sharing
 
-Trello Board:<br>
-https://trello.com/b/XDt421dC/1510-final
