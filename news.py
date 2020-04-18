@@ -7,7 +7,7 @@ import requests
 import default_country
 
 
-def print_messages(original_func):
+def print_messages(original_func):  # DEMONSTRATES DECORATORS
     """
     Print loading messages to display for user.
 
@@ -53,20 +53,24 @@ def display_news_articles_menu():
     :precondition: User input must be an integer between 1 and 3
     :postcondition: Successfully handle user's input using menu_handler function
     """
-    try:
-        # Get user input after displaying menu
-        user_input = int(input(
-            "1. Top news about your current location\n"
-            "2. Global news about COVID-19\n"
-            "3. Search news articles by keyword\n"))
-    except ValueError:
-        print("Invalid input! Try again.")
-    else:
-        if 1 <= user_input <= 3:
-            menu_handler(user_input)  # Will direct user to their selected menu option
-        else:
+    unchecked_input = True
+
+    while unchecked_input:
+        try:
+            # Get user input after displaying menu
+            user_input = int(input(
+                "1. Top news about your current location\n"
+                "2. Global news about COVID-19\n"
+                "3. Search news articles by keyword\n"))
+        except ValueError:
             print("Invalid input! Try again.")
-            display_news_articles_menu()  # Try to get user's input again after invalid input
+            continue
+        else:
+            if 1 <= user_input <= 3:
+                unchecked_input = False
+                menu_handler(user_input)  # Will direct user to their selected menu option
+            else:
+                print("Invalid input! Try again.")
 
 
 def menu_handler(user_input):
