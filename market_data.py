@@ -1,5 +1,6 @@
 import yfinance as yf
 import textwrap
+import app
 
 
 def ask_for_stock():
@@ -72,7 +73,7 @@ def display_info(stock_ticker):
 
     # Print information regarding stock_ticker
     print(f"""
-{stock_ticker['shortName']}    {stock_ticker['currency']}           
+{stock_ticker['shortName']}    {stock_ticker['currency']}$         
 _______________________________________________________
 
 Daily High:         {stock_ticker['dayHigh']}
@@ -102,7 +103,7 @@ Business Summary:
         if user_input == '1':
             return ask_for_stock()
         elif user_input == '2':
-            return
+            return app.option_menu()
         elif user_input == '3':
             quit()
         else:
