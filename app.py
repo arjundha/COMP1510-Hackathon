@@ -178,7 +178,7 @@ def global_statistics():
     display_statistics(statistics)
 
 
-def display_statistics(statistics):
+def display_statistics(statistics: dict):
     """
     Display statistics from given dictionary.
 

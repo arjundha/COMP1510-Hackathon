@@ -8,7 +8,7 @@ import user
 import doctest
 
 
-def verify_for_funding(user_object):
+def verify_for_funding(user_object: object):
     """
     Verify user for Canada's government funding.
 
@@ -40,7 +40,7 @@ def verify_for_funding(user_object):
         input("Hit any button to continue")
 
 
-def verify_country(user_object):
+def verify_country(user_object: object) -> bool:
     """
     Verify user's country.
 
@@ -62,7 +62,7 @@ def verify_country(user_object):
     return True if user_object.get_country() == "Canada" else False
 
 
-def verify_age(user_object):
+def verify_age(user_object: object) -> bool:
     """
     Verify user's age.
 
@@ -84,7 +84,7 @@ def verify_age(user_object):
     return True if user_object.get_age() >= 15 else False
 
 
-def verify_income(user_object):
+def verify_income(user_object: object) -> bool:
     """
     Verify user's income status.
 
@@ -107,7 +107,7 @@ def verify_income(user_object):
         verify_if_student(user_object)
 
 
-def verify_if_student(user_object):
+def verify_if_student(user_object: object):
     """
     Verify if user is a post-secondary student.
 
@@ -187,7 +187,7 @@ def province_selector():
     return user_province
 
 
-def open_link(url):
+def open_link(url: str):
     """
     Open the article URL in user's default web browser.
 
