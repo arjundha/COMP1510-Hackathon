@@ -190,6 +190,10 @@ class User:
         Return a string representing a User object.
 
         :return: Object as a string.
+
+        >>> test_user = User("Arjun Dhaliwal", 24, 0, "Canada", True)
+        >>> test_user
+        User("Arjun Dhaliwal", 24, $0, Canada, True)
         """
         return "User(\"%s\", %d, $%d, %s, %s)" % (self.get_name(), self.get_age(), self.get_income(),
                                                   self.get_country(), self.get_student())
@@ -200,15 +204,6 @@ def main():
     Test the functions in the module.
     """
     doctest.testmod()
-    test_user = User("Arjun", 24, 0, "Canada", True)
-    print(test_user)
-    test_user.set_name("Arjunnnnnn")
-    test_user.set_age(475345834758934795)
-    test_user.set_income(32545345)
-    test_user.set_country("france")
-    test_user.set_student(False)
-    print(test_user)
-    print(test_user.get_student())
 
 
 if __name__ == '__main__':
