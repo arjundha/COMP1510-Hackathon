@@ -34,7 +34,7 @@ def check_with_user(stock: str) -> object:
             # Declare ticker
             ticker = yf.Ticker(stock)
 
-        except ImportError and KeyError:
+        except (ImportError, KeyError):
             # Except error and inform user
             print("We can't find the stock entered..")
             print("Please input the stock abbreviated name.\n Example: Microsoft Corp. -> MSFT\n")
@@ -45,7 +45,7 @@ def check_with_user(stock: str) -> object:
                 print("Is this the desired Company?")
                 print(ticker.info['longName'])
 
-            except IndexError and KeyError:
+            except (IndexError, KeyError):
                 # Sometimes api data can be broken for certain stocks
                 print("There seems to be an issue fetching the information for the stock entered")
                 print("Please try a different stock, input the stock abbreviated name.\n")
